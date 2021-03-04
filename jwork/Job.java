@@ -50,6 +50,6 @@ public class Job
     public void setFee(int fee){ 
     }
     
-    public void setCategoryy(String category){ 
+    public void setCategory(String category){ 
     }
 }

@@ -45,6 +45,10 @@ public class Jobseeker
         return "oop";
     }
     
+    public String getJoinDate(){
+        return "oop";
+    }
+    
     public void setId(int id){ 
     }
     

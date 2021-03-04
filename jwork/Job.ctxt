@@ -20,5 +20,5 @@ comment7.target=void\ setName(java.lang.String)
 comment8.params=fee
 comment8.target=void\ setFee(int)
 comment9.params=category
-comment9.target=void\ setCategoryy(java.lang.String)
+comment9.target=void\ setCategory(java.lang.String)
 numComments=10
