@@ -10,12 +10,18 @@ public class Job
     // instance variables - replace the example below with your own
     private int id, fee;
     private String name, category;
+    private Recruiter recruiter;
     /**
      * Constructor for objects of class Job
      */
-    public Job()
+    public Job(int id, String name, Recruiter recruiter, int fee, String category)
     {
         // initialise instance variables
+        this.id = id;
+        this.name = name;
+        this.recruiter = recruiter;
+        this.fee = fee;
+        this.category = category;
     }
 
     /**
@@ -26,30 +32,42 @@ public class Job
      */
     public int getID()
     {
-        return 0;
+        return this.id;
     }
     
     public String getName(){
-        return "oop";
+        return this.name;
+    }
+    
+    public Recruiter getRecruiter(){
+        return this.recruiter;
     }
     
     public int getFee(){
-        return 0;
+        return this.fee;
     }
     
     public String getCategory(){
-        return "oop";
+        return this.category;
     }
     
     public void setId(int id){ 
+        this.id = id;
     }
     
     public void setName(String name){ 
+        this.name = name;
+    }
+    
+    public void setRecruiter(Recruiter recruiter){
+        this.recruiter = recruiter;
     }
     
     public void setFee(int fee){ 
+        this.fee = fee;
     }
     
     public void setCategory(String category){ 
+        this.category = category;
     }
 }
