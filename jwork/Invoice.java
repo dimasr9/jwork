@@ -70,7 +70,7 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     
-    public void printData(){   
-        
+    public void printData(){
+        System.out.println(getTotalFee());
     }
 }

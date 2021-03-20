@@ -70,4 +70,8 @@ public class Job
     public void setCategory(String category){ 
         this.category = category;
     }
+    
+    public void printData(){
+        System.out.println(getName());
+    }
 }
