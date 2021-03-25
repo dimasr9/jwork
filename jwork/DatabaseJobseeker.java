@@ -1,19 +1,23 @@
 
 /**
+ * Write a description of class DatabaseJobseeker here.
  *
- * @author Dimas Radhitya
- * @version Modul 2 - 25 Maret 2021
+ * @author (your name)
+ * @version (a version number or a date)
  */
-public class DatabaseJob
+public class DatabaseJobseeker
 {
     // Mendefinisikan variabel
     private String[] listJob;
+    
+    public DatabaseJobseeker(){
+    }
     
     /**
      * method untuk menambahkan objek database job
      * @return nilai false
      */
-    public static boolean addJob(Job job){
+    public static boolean addJobseeker(Jobseeker jobseeker){
         return false;
     }
     
@@ -21,7 +25,7 @@ public class DatabaseJob
      * method untuk menghapus objek database job
      * @return nilai false
      */
-    public static boolean removeJob(Job job){
+    public static boolean removeJobseeker(Jobseeker jobseeker){
        return false;
     }
     
@@ -29,7 +33,7 @@ public class DatabaseJob
      * getter objek Database Job
      * @return nilai null
      */
-    public static Job getJob(){
+    public static Jobseeker getJobseeker(){
        return null; 
     }
     
@@ -37,7 +41,7 @@ public class DatabaseJob
      * getter list object Database Job
      * @return nilai null
      */
-    public static String[] getListJob(){
+    public static String[] getListJobseeker(){
        return null; 
     } 
 }

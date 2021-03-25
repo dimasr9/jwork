@@ -31,7 +31,7 @@ public class Recruiter
      * getter id dari recruiter
      * @return id dari recruiter
      */
-    public int getID()
+    public int getId()
     {
         return this.id;
     }
@@ -58,6 +58,14 @@ public class Recruiter
      */
     public String getPhoneNumber(){
         return this.phoneNumber;
+    }
+    
+    /**
+     * getter nomor telepon dari recruiter
+     * @return phoneNumber dari recruiter
+     */
+    public Location getLocation(){
+        return this.location;
     }
     
     /**
@@ -105,6 +113,11 @@ public class Recruiter
      * output adalah nama lokasi
      */
     public void printData(){   
-        System.out.println(getName());
+        System.out.println("=============Recruiter==============");
+        System.out.println("ID : " + getId());
+        System.out.println("Name : " + getName());
+        System.out.println("Email : " + getEmail());
+        System.out.println("Phone : " + getPhoneNumber());
+        System.out.println("City : " + location.getCity());
     }
 }

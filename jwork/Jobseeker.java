@@ -30,7 +30,7 @@ public class Jobseeker
      * getter id dari Jobseeker
      * @return id dari Jobseeker
      */
-    public int getID()
+    public int getId()
     {
         return this.id;
     }
@@ -112,6 +112,11 @@ public class Jobseeker
      * output adalah nama dari Jobseeker
      */
     public void printData(){
-        System.out.println(getName());
+        System.out.println("=============JOBSEEKER==============");
+        System.out.println("ID : " + getId());
+        System.out.println("Name : " + getName());
+        System.out.println("Email : " + getEmail());
+        System.out.println("Password : " + getPassword());
+        System.out.println("Fee : " + getJoinDate());
     }
 }

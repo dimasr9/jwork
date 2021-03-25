@@ -80,6 +80,9 @@ public class Location
      * output adalah nama provinsi
      */
     public void printData(){
-        System.out.println(getProvince());
+        System.out.println("=============Location==============");
+        System.out.println("Province : " + getProvince());
+        System.out.println("City : " + getCity());
+        System.out.println("Description : " + getDescription());
     }
 }

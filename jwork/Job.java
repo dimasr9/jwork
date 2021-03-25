@@ -8,8 +8,9 @@ public class Job
 {
     // Mendefinisikan variabel
     private int id, fee;
-    private String name, category;
+    private String name;
     private Recruiter recruiter;
+    private JobCategory category;
     /**
      * Constructor untuk object dari class Job
      * @param id id dari Job
@@ -18,7 +19,7 @@ public class Job
      * @param fee gaji dari Job
      * @param category kategori dari Job
      */
-    public Job(int id, String name, Recruiter recruiter, int fee, String category)
+    public Job(int id, String name, Recruiter recruiter, int fee, JobCategory category)
     {
         // initialise instance variables
         this.id = id;
@@ -65,7 +66,7 @@ public class Job
      * getter kategori dari Job
      * @return category dari Job
      */
-    public String getCategory(){
+    public JobCategory getCategory(){
         return this.category;
     }
     
@@ -105,7 +106,7 @@ public class Job
      * setter kategori dari Job
      * @param category dari Job
      */
-    public void setCategory(String category){ 
+    public void setCategory(JobCategory category){ 
         this.category = category;
     }
     
@@ -114,6 +115,12 @@ public class Job
      * output adalah nama dari Job
      */
     public void printData(){
-        System.out.println(getName());
+        System.out.println("=============JOB==============");
+        System.out.println("ID : " + getID());
+        System.out.println("Name : " + getName());
+        System.out.println("Recruiter : " + recruiter.getName());
+        System.out.println("City : " + recruiter.getLocation().getCity());
+        System.out.println("Fee : " + getFee());
+        System.out.println("Category : " + getCategory());
     }
 }

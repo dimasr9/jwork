@@ -8,14 +8,6 @@ public class DatabaseRecruiter
 {
     // Mendefinisikan variabel
     private String[] listRecruiter;
-    /**
-     * Constructor untuk object dari class DatabaseRecruiter
-     * @param province provinsi dari lokasi
-     * @param city kota dari lokasi
-     * @param description deskripsi dari lokasi
-     */
-    public DatabaseRecruiter(){
-    }
     
     /**
      * method untuk menambahkan objek pada database recruiter
@@ -29,7 +21,7 @@ public class DatabaseRecruiter
      * method untuk menghapus objek pada database recruiter
      * @return nilai false
      */
-    public boolean removeJob(Recruiter recruiter){
+    public static boolean removeJob(Recruiter recruiter){
        return false;
     }
     
@@ -37,7 +29,7 @@ public class DatabaseRecruiter
      * getter objek recruiter
      * @return nilai null
      */
-    public Job getRecruiter(){
+    public static Job getRecruiter(){
        return null; 
     }
     
@@ -45,7 +37,7 @@ public class DatabaseRecruiter
      * getter list object recruiter
      * @return nilai null
      */
-    public String[] getListRecruiter(){
+    public static String[] getListRecruiter(){
        return null; 
     } 
 }
