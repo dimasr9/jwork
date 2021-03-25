@@ -1,16 +1,19 @@
 #BlueJ class context
 comment0.target=DatabaseJob
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ DatabaseJob\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\r\n\ @author\ Dimas\ Radhitya\r\n\ @version\ Modul\ 2\ -\ 25\ Maret\ 2021\r\n
 comment1.params=
 comment1.target=DatabaseJob()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ DatabaseJob\r\n
+comment1.text=\r\n\ Constructor\ untuk\ object\ dari\ class\ DatabaseJob\r\n
 comment2.params=job
 comment2.target=boolean\ addJob(Job)
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+comment2.text=\r\n\ method\ untuk\ menambahkan\ objek\ database\ job\r\n\ @return\ nilai\ false\r\n
 comment3.params=job
 comment3.target=boolean\ removeJob(Job)
+comment3.text=\r\n\ method\ untuk\ menghapus\ objek\ database\ job\r\n\ @return\ nilai\ false\r\n
 comment4.params=
 comment4.target=Job\ getJob()
+comment4.text=\r\n\ getter\ objek\ Database\ Job\r\n\ @return\ nilai\ null\r\n
 comment5.params=
 comment5.target=java.lang.String[]\ getListJob()
+comment5.text=\r\n\ getter\ list\ object\ Database\ Job\r\n\ @return\ nilai\ null\r\n
 numComments=6

@@ -1,19 +1,22 @@
 
 /**
- * Write a description of class Recruiter here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version Modul 2 - 25 Maret 2021
  */
 public class Recruiter
 {
-    // instance variables - replace the example below with your own
+    // Mendefinisikan variabel
     private int id;
     private String name, email, phoneNumber;
     private Location location;
 
     /**
-     * Constructor for objects of class Recruiter
+     * Constructor untuk object dari class Recruiter
+     * @param id dari recruiter
+     * @param name nama dari recruiter
+     * @param phooneNumber nomor telepon dari recruiter
+     * @param location objek lokasi dari class Location
      */
     public Recruiter(int id,String name, String email, String phoneNumber, Location location)
     {
@@ -25,48 +28,82 @@ public class Recruiter
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * getter id dari recruiter
+     * @return id dari recruiter
      */
     public int getID()
     {
         return this.id;
     }
     
+    /**
+     * getter nama dari recruiter
+     * @return name dari recruiter
+     */
     public String getName(){
         return this.name;
     }
     
+    /**
+     * getter email dari recruiter
+     * @return email dari recruiter
+     */
     public String getEmail(){
         return this.email;
     }
     
+    /**
+     * getter nomor telepon dari recruiter
+     * @return phoneNumber dari recruiter
+     */
     public String getPhoneNumber(){
         return this.phoneNumber;
     }
     
+    /**
+     * setter id dari recruiter
+     * @param id dari recruiter
+     */
     public void setId(int id){ 
         this.id = id;
     }
     
+    /**
+     * setter nama dari lokasi
+     * @param name dari lokasi
+     */
     public void setName(String name){ 
         this.name = name;
     }
     
+    /**
+     * setter email dari lokasi
+     * @param email dari lokasi
+     */
     public void setEmail(String email){ 
         this.email = email;
     }
     
+    /**
+     * setter nomor telepon dari lokasi
+     * @param phoneNumber dari lokasi
+     */
     public void setPhoneNumber(String phoneNumber){ 
         this.phoneNumber = phoneNumber;
     }
     
+    /**
+     * setter lokasi dari class lokasi
+     * @param lokasi dari class lokasi
+     */
     public void setLocation(Location location){
         this.location = location; 
     }
     
+    /**
+     * method mencetak nama dari lokasi
+     * output adalah nama lokasi
+     */
     public void printData(){   
         System.out.println(getName());
     }

@@ -14,11 +14,12 @@ public class JWork
         Jobseeker jobseeker1 = new Jobseeker(1, "Lala", "halo@gmail.com", "password", "18 maret 2020");
         Invoice invoice1 = new Invoice(1, 1, "18 Maret 2020", 200000, jobseeker1);
         
-        praktikan.getName();
+        System.out.println(praktikan.getName());
         praktikan.setName("Ferlinda");
-        praktikan.getName();
+        System.out.println(praktikan.getName());
         jobseeker1.printData();
-        
+        DatabaseJob.addJob(pekerjaan);
+        DatabaseRecruiter.addRecruiter(praktikan);
     }
 }
 

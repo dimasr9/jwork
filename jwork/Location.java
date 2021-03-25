@@ -1,17 +1,18 @@
 
 /**
- * Write a description of class Location here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version Modul 2 - 25 Maret 2021
  */
 public class Location
 {
-    // instance variables - replace the example below with your own
+    // Mendefinisikan variabel
     private String province, city, description;
-
     /**
-     * Constructor for objects of class Location
+     * Constructor untuk object dari class Location
+     * @param province provinsi dari lokasi
+     * @param city kota dari lokasi
+     * @param description deskripsi dari lokasi
      */
     public Location(String province, String city, String description)
     {
@@ -21,47 +22,63 @@ public class Location
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * getter province dari lokasi
+     * @return province dari lokasi
      */
     public String getProvince()
     {
-        // put your code here
         return this.province;
     }
     
+    /**
+     * getter city dari lokasi
+     * @return city dari lokasi
+     */
     public String getCity()
     {
-        // put your code here
         return this.city;
     }
     
+    /**
+     * getter description dari lokasi
+     * @return description dari lokasi
+     */
     public String getDescription()
     {
-        // put your code here
         return this.description;
     }
     
+    /**
+     * setter provinve dari lokasi
+     * @param province dari lokasi
+     */
     public void setProvince(String province)
     {
-        // put your code here
         this.province = province;
     }
     
+    /**
+     * setter city dari lokasi
+     * @param city dari lokasi
+     */
     public void setCity(String city)
     {
-        // put your code here
         this.city = city;
     }
     
+    /**
+     * setter description dari lokasi
+     * @param description dari lokasi
+     */
     public void setDescription(String description)
     {
-        // put your code here
         this.description = description;
     }
     
+    /**
+     * method mencetak total gaji dari lokasi
+     * output adalah nama provinsi
+     */
     public void printData(){
         System.out.println(getProvince());
     }

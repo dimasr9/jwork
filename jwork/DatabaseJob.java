@@ -1,50 +1,48 @@
 
 /**
- * Write a description of class DatabaseJob here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version Modul 2 - 25 Maret 2021
  */
 public class DatabaseJob
 {
-    // instance variables - replace the example below with your own
+    // Mendefinisikan variabel
     private String[] listJob;
-
     /**
-     * Constructor for objects of class DatabaseJob
+     * Constructor untuk object dari class DatabaseJob
      */
-    public DatabaseJob()
-    {
-        // initialise instance variables
+    public DatabaseJob(){
     }
-
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * method untuk menambahkan objek database job
+     * @return nilai false
      */
-    public boolean addJob(Job job)
-    {
-        // put your code here
+    public static boolean addJob(Job job){
         return false;
     }
     
-    public boolean removeJob(Job job)
-    {
-        // put your code here
-        return false;
+    /**
+     * method untuk menghapus objek database job
+     * @return nilai false
+     */
+    public boolean removeJob(Job job){
+       return false;
     }
     
-    public Job getJob()
-    {
-        // put your code here
-        return null;
+    /**
+     * getter objek Database Job
+     * @return nilai null
+     */
+    public Job getJob(){
+       return null; 
     }
     
-    public String[] getListJob()
-    {
-        // put your code here
-        return null;
-    }
+    /**
+     * getter list object Database Job
+     * @return nilai null
+     */
+    public String[] getListJob(){
+       return null; 
+    } 
 }

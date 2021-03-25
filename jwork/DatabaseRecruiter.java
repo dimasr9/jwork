@@ -1,50 +1,51 @@
 
 /**
- * Write a description of class DatabaseRecruiter here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version Modul 2 - 25 Maret 2021
  */
 public class DatabaseRecruiter
 {
-    // instance variables - replace the example below with your own
+    // Mendefinisikan variabel
     private String[] listRecruiter;
-    private Recruiter recruiter;
-
     /**
-     * Constructor for objects of class DatabaseRecruiter
+     * Constructor untuk object dari class DatabaseRecruiter
+     * @param province provinsi dari lokasi
+     * @param city kota dari lokasi
+     * @param description deskripsi dari lokasi
      */
-    public DatabaseRecruiter()
-    {
-        // initialise instance variables
-        
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public boolean addRecruiter(Recruiter recruiter)
-    {
-        // put your code here
-        return true;
+    public DatabaseRecruiter(){
     }
     
-    public boolean removeRecruiter(Recruiter recruiter)
-    {
-        // put your code here
+    /**
+     * method untuk menambahkan objek pada database recruiter
+     * @return nilai false
+     */
+    public static boolean addRecruiter(Recruiter recruiter){
         return false;
     }
     
-    public Recruiter getRecruiter()
-    {
-        // put your code here
-        return this.recruiter;
+    /**
+     * method untuk menghapus objek pada database recruiter
+     * @return nilai false
+     */
+    public boolean removeJob(Recruiter recruiter){
+       return false;
     }
     
-    public String[] getListRecruiter(){
-        return null;
+    /**
+     * getter objek recruiter
+     * @return nilai null
+     */
+    public Job getRecruiter(){
+       return null; 
     }
+    
+    /**
+     * getter list object recruiter
+     * @return nilai null
+     */
+    public String[] getListRecruiter(){
+       return null; 
+    } 
 }
