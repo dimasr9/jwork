@@ -33,7 +33,7 @@ public class Job
      * getter id dari Job
      * @return id dari Job
      */
-    public int getID()
+    public int getId()
     {
         return this.id;
     }
@@ -116,7 +116,7 @@ public class Job
      */
     public void printData(){
         System.out.println("=============JOB==============");
-        System.out.println("ID : " + getID());
+        System.out.println("ID : " + getId());
         System.out.println("Name : " + getName());
         System.out.println("Recruiter : " + recruiter.getName());
         System.out.println("City : " + recruiter.getLocation().getCity());
