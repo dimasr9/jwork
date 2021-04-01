@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=DatabaseBonus
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DatabaseBonus\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=bonus
+comment1.target=boolean\ addBonus(Bonus)
+comment1.text=\r\n\ method\ untuk\ menambahkan\ objek\ database\ job\r\n\ @return\ nilai\ false\r\n
+comment2.params=bonus
+comment2.target=boolean\ removeBonus(Bonus)
+comment2.text=\r\n\ method\ untuk\ menghapus\ objek\ database\ job\r\n\ @return\ nilai\ false\r\n
+comment3.params=
+comment3.target=Bonus\ getBonus()
+comment3.text=\r\n\ getter\ objek\ Database\ Job\r\n\ @return\ nilai\ null\r\n
+comment4.params=
+comment4.target=java.lang.String[]\ getListBonus()
+comment4.text=\r\n\ getter\ list\ object\ Database\ Job\r\n\ @return\ nilai\ null\r\n
+numComments=5

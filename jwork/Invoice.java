@@ -4,14 +4,16 @@
  * @author Dimas Radhitya
  * @version Modul 2 - 25 Maret 2021
  */
-public class Invoice
+public abstract class Invoice
 {
     // Mendefinisikan variabel
-    private int id, idJob, totalFee;
+    private int id;
+    protected int totalFee;
+    private Job job;
     private String date;
     private Jobseeker jobseeker;
     private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus InvoiceStatus;
 
     /**
      * Constructor untuk object dari class Invoice
@@ -20,17 +22,17 @@ public class Invoice
      * @param date tanggal dari Invoice
      * @param objek jobseeker dari class Jobseeker
      */
-    public Invoice(int id, int idJob, String date, int totalFee, 
-    Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus status)
+    public Invoice(int id, Job job, String date, int totalFee, 
+    Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus InvoiceStatus)
     {
         // initialise instance variables
         this.id = id;
-        this.idJob = idJob;
+        this.job = job;
         this.date = date;
         this.totalFee = totalFee;
         this.jobseeker = jobseeker;
         this.paymentType = paymentType;
-        this.status = status;
+        this.InvoiceStatus = InvoiceStatus;
     }
 
     /**
@@ -46,9 +48,9 @@ public class Invoice
      * getter job id dari Invoice
      * @return IdJob dari Invoice
      */
-    public int getIdJob()
+    public Job getJob()
     {
-        return this.idJob;
+        return this.job;
     }
     
     /**
@@ -68,12 +70,14 @@ public class Invoice
         return this.totalFee;
     }
     
-    public PaymentType getPaymentType(){
-        return this.paymentType;
+    public Jobseeker getJobseeker(){
+        return this.jobseeker;
     }
     
+    public abstract PaymentType getPaymentType();
+    
     public InvoiceStatus getInvoiceStatus(){
-        return this.status;
+        return this.InvoiceStatus;
     }
     /**
      * setter id dari Invoice
@@ -87,8 +91,8 @@ public class Invoice
      * setter job id dari Invoice
      * @param IdJob dari Invoice
      */
-    public void setIdJob(int idJob){ 
-        this.idJob = idJob;
+    public void Job(Job job){ 
+        this.job = job;
     }
     
     /**
@@ -103,9 +107,7 @@ public class Invoice
      * setter total gaji dari Invoice
      * @param TotalFee dari Invoice
      */
-    public void setTotalFee(int totalFee){ 
-        this.totalFee = totalFee;
-    }
+    public abstract void setTotalFee();
     
     /**
      * setter jobseeker menggunakan objek dari class Jobseeker
@@ -119,20 +121,12 @@ public class Invoice
         this.paymentType = paymentType;
     }
     
-    public void setInvoiceStatus(InvoiceStatus status){ 
-        this.status = status;
+    public void setInvoiceStatus(InvoiceStatus InvoiceStatus){ 
+        this.InvoiceStatus = InvoiceStatus;
     }
     /**
      * method mencetak total gaji dari Invoice
      * output adalah TotalFee dari Invoice
      */
-    public void printData(){
-        System.out.println("============= INVOICE ==============");
-        System.out.println("ID : " + getId());
-        System.out.println("ID Job : " + getIdJob());
-        System.out.println("Date : " + getDate());
-        System.out.println("Seeker : " + jobseeker.getName());
-        System.out.println("Fee : " + getTotalFee());
-        System.out.println("Status : " + getInvoiceStatus());
-    }
+    public abstract void printData();
 }

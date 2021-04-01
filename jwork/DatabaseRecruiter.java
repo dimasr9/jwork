@@ -7,7 +7,7 @@
 public class DatabaseRecruiter
 {
     // Mendefinisikan variabel
-    private String[] listRecruiter;
+    private static String[] listRecruiter;
     
     /**
      * method untuk menambahkan objek pada database recruiter

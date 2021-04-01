@@ -8,7 +8,7 @@
 public class DatabaseJobseeker
 {
     // Mendefinisikan variabel
-    private String[] listJob;
+    private static String[] listJob;
     
     public DatabaseJobseeker(){
     }
