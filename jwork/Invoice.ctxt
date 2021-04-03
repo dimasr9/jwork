@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Invoice
 comment0.text=\r\n\r\n\ @author\ Dimas\ Radhitya\r\n\ @version\ Modul\ 2\ -\ 25\ Maret\ 2021\r\n
-comment1.params=id\ job\ date\ totalFee\ jobseeker\ paymentType\ InvoiceStatus
-comment1.target=Invoice(int,\ Job,\ java.lang.String,\ int,\ Jobseeker,\ PaymentType,\ InvoiceStatus)
+comment1.params=id\ job\ date\ jobseeker\ InvoiceStatus
+comment1.target=Invoice(int,\ Job,\ java.lang.String,\ Jobseeker,\ InvoiceStatus)
 comment1.text=\r\n\ Constructor\ untuk\ object\ dari\ class\ Invoice\r\n\ @param\ id\ id\ dari\ Invoice\r\n\ @param\ idJob\ job\ id\ dari\ Invoice\r\n\ @param\ date\ tanggal\ dari\ Invoice\r\n\ @param\ objek\ jobseeker\ dari\ class\ Jobseeker\r\n
 comment10.params=job
 comment10.target=void\ Job(Job)

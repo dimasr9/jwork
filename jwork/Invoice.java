@@ -22,16 +22,13 @@ public abstract class Invoice
      * @param date tanggal dari Invoice
      * @param objek jobseeker dari class Jobseeker
      */
-    public Invoice(int id, Job job, String date, int totalFee, 
-    Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus InvoiceStatus)
+    public Invoice(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus InvoiceStatus)
     {
         // initialise instance variables
         this.id = id;
         this.job = job;
         this.date = date;
-        this.totalFee = totalFee;
         this.jobseeker = jobseeker;
-        this.paymentType = paymentType;
         this.InvoiceStatus = InvoiceStatus;
     }
 
