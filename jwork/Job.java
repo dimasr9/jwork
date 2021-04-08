@@ -110,11 +110,20 @@ public class Job
         this.category = category;
     }
     
+    public String toString(){
+        return "Id = "+ id +
+               "\nNama = "+ name +
+               "\nRecruiter = " + recruiter.getName() +
+               "\nCity = "+ recruiter.getLocation().getCity() +
+               "\nFee = "+ fee +
+               "\nCategory =" + category;
+    }
+    
     /**
      * method mencetak nama dari Job
      * output adalah nama dari Job
      */
-    public void printData(){
+    /*public void printData(){
         System.out.println("=============JOB==============");
         System.out.println("ID : " + id);
         System.out.println("Name : " + name);
@@ -122,5 +131,5 @@ public class Job
         System.out.println("City : " + recruiter.getLocation().getCity());
         System.out.println("Fee : " + fee);
         System.out.println("Category : " + category);
-    }
+    }*/
 }

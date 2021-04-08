@@ -108,16 +108,24 @@ public class Recruiter
         this.location = location; 
     }
     
+    public String toString(){
+        return "Id = "+ id +
+               "\nNama = "+ name +
+               "\nEmail = " + email +
+               "\nPhone = "+ phoneNumber +
+               "\nLocation = "+ location.getCity();
+    }
+    
     /**
      * method mencetak nama dari lokasi
      * output adalah nama lokasi
      */
-    public void printData(){   
+    /*public void printData(){   
         System.out.println("=============Recruiter==============");
         System.out.println("ID : " + id);
         System.out.println("Name : " + name);
         System.out.println("Email : " + email);
         System.out.println("Phone : " + phoneNumber);
         System.out.println("City : " + location.getCity());
-    }
+    }*/
 }

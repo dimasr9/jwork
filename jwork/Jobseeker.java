@@ -1,3 +1,8 @@
+import java.util.Calendar;
+import java.util.regex.*;  
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -8,7 +13,8 @@ public class Jobseeker
 {
     // Mendefinisikan variabel
     private int id;
-    private String name, email, password, joinDate;
+    private String name, email, password;
+    private Calendar joinDate;
 
     /**
      * Constructor untuk object dari class Jobseeker
@@ -18,14 +24,35 @@ public class Jobseeker
      * @param password password dari Jobseeker
      * @param joinDate tanggal masuk dari Jobseeker
      */
-    public Jobseeker(int id, String name, String email, String password, String joinDate)
+    public Jobseeker(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.password = password;
         this.joinDate = joinDate;
+        setEmail(email);
+        setPassword(password);
     }
-
+    
+    public Jobseeker(int id, String name, String email, String password,
+                      int year, int month, int dayOfMonth)
+    {
+        this.id = id;
+        this.name = name;
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setJoinDate(year, month, dayOfMonth);
+    }
+    
+    public Jobseeker(int id, String name, String email, String password)
+    {
+        this.id = id;
+        this.name = name;
+        this.setEmail(email);
+        this.setPassword(password);
+    }
+    
     /**
      * getter id dari Jobseeker
      * @return id dari Jobseeker
@@ -63,7 +90,7 @@ public class Jobseeker
      * getter tanggal masuk dari Jobseeker
      * @return joinDate dari Jobseeker
      */
-    public String getJoinDate(){
+    public Calendar getJoinDate(){
         return this.joinDate;
     }
     
@@ -88,7 +115,14 @@ public class Jobseeker
      * @param email dari Jobseeker
      */
     public void setEmail(String email){ 
-        this.email = email;
+        Pattern p = Pattern.compile("^(?!.*([.])\1)[^-.][A-Za-z0-9.&*_~]+@[^-. ][A-Za-z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*");
+        Matcher m = p.matcher(email);
+        if (m.find()){
+            this.email = email;
+        }
+        else{
+            this.email = "";
+        }
     }
     
     /**
@@ -96,27 +130,55 @@ public class Jobseeker
      * @param password dari Jobseeker
      */
     public void setPassword(String password){ 
-        this.password = password;
+        Pattern p = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$");
+        Matcher m = p.matcher(password);
+        if (m.find()){
+            this.password = password;
+        }
+        else{
+            this.password = "";
+        }
     }
     
     /**
      * setter tanggal masuk dari Jobseeker
      * @param joinDate dari Jobseeker
      */
-    public void setJoinDate(String joinDate){ 
+    public void setJoinDate(Calendar joinDate){
         this.joinDate = joinDate;
+    }
+
+    public void setJoinDate(int year, int month, int dayOfMonth)
+    {
+        this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
+    }
+    
+    public String toString(){
+    String joindate = "";
+    String pattern = "dd-MM-yyyy";
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+    
+        if (joinDate != null){
+    Date date = joinDate.getTime();
+    joindate = simpleDateFormat.format(date);
+    }
+    return "Id = "+ id +
+           "\nNama = "+ name +
+           "\nEmail = " + email +
+           "\nPassword = "+ password +
+           "\nJoin Date = "+ joindate;
     }
     
     /**
      * method mencetak nama dari Jobseeker
      * output adalah nama dari Jobseeker
      */
-    public void printData(){
+    /*public void printData(){
         System.out.println("=============JOBSEEKER==============");
         System.out.println("ID : " + id);
         System.out.println("Name : " + name);
         System.out.println("Email : " + email);
         System.out.println("Password : " + password);
         System.out.println("Fee : " + joinDate);
-    }
+    }*/
 }

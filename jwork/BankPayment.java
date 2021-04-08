@@ -9,7 +9,7 @@ public class BankPayment extends Invoice
 {
     // instance variables - replace the example below with your own
     private static final PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
-    private int adminFee;
+    private int adminFee = 0;
     
     public BankPayment(int id, Job job, String date, Jobseeker jobseeker, 
     InvoiceStatus invoiceStatus){
@@ -48,13 +48,7 @@ public class BankPayment extends Invoice
     public void setTotalFee()
     {
         // put your code here
-        if (adminFee!=0){
-            super.totalFee = super.getJob().getFee() - adminFee;
-            super.totalFee = super.getJob().getFee();
-        }
-        else{
-            super.totalFee = super.getJob().getFee();
-        }
+        super.totalFee = super.getJob().getFee();
     }
     
     @Override

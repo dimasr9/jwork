@@ -75,14 +75,20 @@ public class Location
         this.description = description;
     }
     
+    public String toString(){
+        return "Province = "+ province +
+               "\nCity = "+ city +
+               "\nDescription = " + description;
+    }
+    
     /**
      * method mencetak total gaji dari lokasi
      * output adalah nama provinsi
      */
-    public void printData(){
+    /*public void printData(){
         System.out.println("=============Location==============");
         System.out.println("Province : " + province);
         System.out.println("City : " + city);
         System.out.println("Description : " + description);
-    }
+    }*/
 }
