@@ -19,32 +19,31 @@ public class JWork
         Jobseeker jobseeker2 = new Jobseeker(2, "Dimas2", "dimas@gmail.com", "McLarenP1", 2020, 12, 20 );
         Jobseeker jobseeker3 = new Jobseeker(3, "Dimas3","dimasr@gmail.com", "McLarenP1" );
         
-        jobseeker1.toString();
-        System.out.println(jobseeker1.toString());
-        jobseeker2.toString();
-        System.out.println(jobseeker2.toString());
-        jobseeker3.toString();
-        System.out.println(jobseeker3.toString());
+        //jobseeker1.toString();
+        //System.out.println(jobseeker1.toString());
+        //jobseeker2.toString();
+        //System.out.println(jobseeker2.toString());
+        //jobseeker3.toString();
+        //System.out.println(jobseeker3.toString());
         
-        jobseeker1.setEmail("dimasradhitya@gmail.com");
-        jobseeker1.setPassword("McLarenP1");
+        //jobseeker1.setEmail("dimasradhitya@gmail.com");
+        //jobseeker1.setPassword("McLarenP1");
+        //Calendar date1 = new GregorianCalendar();
+        //System.out.println(jobseeker1.toString());
+        Job pekerjaan = new Job(1, "Senior Designer", praktikan, 10, JobCategory.WebDeveloper);
         
-        System.out.println(jobseeker1.toString());
-        //Job pekerjaan = new Job(1, "Senior Designer", praktikan, 10, JobCategory.WebDeveloper);
-        
-        
-        
-        //EwalletPayment ewallet1 = new EwalletPayment(1, pekerjaan, "18 maret 2020", jobseeker1, bonus1, InvoiceStatus.OnGoing);
+        EwalletPayment ewallet1 = new EwalletPayment(1, pekerjaan, jobseeker1, bonus1, InvoiceStatus.OnGoing);
         //EwalletPayment ewallet2 = new EwalletPayment(2, pekerjaan, "18 maret 2020", jobseeker1, bonus2, InvoiceStatus.OnGoing);
         //EwalletPayment ewallet3 = new EwalletPayment(3, pekerjaan, "18 maret 2020", jobseeker1, bonus3, InvoiceStatus.OnGoing);
-        //BankPayment bankpayment1 = new BankPayment(1, pekerjaan, "20 maret 2020", jobseeker1, InvoiceStatus.Finished);
+        BankPayment bankpayment1 = new BankPayment(1, pekerjaan, jobseeker1, InvoiceStatus.Finished);
         //BankPayment bankpayment2 = new BankPayment(1, pekerjaan, "20 maret 2020", jobseeker1, 10, InvoiceStatus.Finished);
-        //ewallet1.setTotalFee();
+        ewallet1.toString();
         //ewallet2.setTotalFee();
         //ewallet3.setTotalFee();
-        //bankpayment1.setTotalFee();
+        bankpayment1.toString();
         //bankpayment2.setTotalFee();
-        
+        System.out.println(ewallet1.toString());
+        System.out.println(bankpayment1.toString());
         
         
         //bankpayment1.printData();

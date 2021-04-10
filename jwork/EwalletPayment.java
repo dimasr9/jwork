@@ -11,14 +11,14 @@ public class EwalletPayment extends Invoice
     private static final PaymentType PAYMENT_TYPE = PaymentType.EwalletPayment;
     private Bonus bonus;
     
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, 
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, 
     InvoiceStatus invoiceStatus){
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
     }
     
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, 
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, 
     Bonus bonus, InvoiceStatus invoiceStatus){
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.bonus = bonus;
     }
     /**
@@ -54,7 +54,30 @@ public class EwalletPayment extends Invoice
         }
     }
     
-    @Override
+    public String toString()
+    {
+        if(getJob().getFee() != totalFee){
+            return 
+            "Id = "+ super.getId() +
+            "\nID Job = "+ super.getJob().getName() +
+            "\nDate = " + super.getDate() +
+            "\nSeeker  = "+ super.getJobseeker().getName() +
+            "\nFee = "+ super.totalFee +
+            "\nBonus = "+ bonus.getReferralCode() +
+            "\nStatus = "+ super.getInvoiceStatus().toString() +
+            "\nPayment Type = "+ PAYMENT_TYPE.toString();
+        }
+        else {
+            return "Id = "+ super.getId() +
+           "\nNama = "+ super.getJob().getName() +
+           "\nEmail = " + super.getDate() +
+           "\nPassword = "+ super.getJobseeker().getName() +
+           "\nJoin Date = "+ super.totalFee +
+           "\nStatus = "+ super.getInvoiceStatus().toString() +
+           "\nPayment Type = "+ PAYMENT_TYPE.toString();
+        }
+    }
+    /*@Override
     public void printData()
     {
         System.out.println("==========INVOICE==========");
@@ -70,5 +93,5 @@ public class EwalletPayment extends Invoice
 
         System.out.println("Status : "+ super.getInvoiceStatus().toString());
         System.out.println("Payment Type : "+ PAYMENT_TYPE.toString());
-    }
+    }*/
 }
