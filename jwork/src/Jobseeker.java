@@ -115,7 +115,7 @@ public class Jobseeker
      * @param email dari Jobseeker
      */
     public void setEmail(String email){ 
-        Pattern p = Pattern.compile("^(?!.*([.])\1)[^-.][A-Za-z0-9.&*_~]+@[^-. ][A-Za-z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*");
+        Pattern p = Pattern.compile("^(?!.*([.])\1)[^-.@][a-zA-Z0-9.&*_~]+(?!.*([@.])\1)[^-.][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*$\n");
         Matcher m = p.matcher(email);
         if (m.find()){
             this.email = email;
@@ -155,7 +155,7 @@ public class Jobseeker
     
     public String toString(){
     String joindate = "";
-    String pattern = "dd-MM-yyyy";
+    String pattern = "dd MMMM yyyy";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
     
         if (joinDate != null){

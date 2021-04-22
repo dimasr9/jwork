@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.time.LocalDate;
@@ -12,26 +13,23 @@ public abstract class Invoice
     // Mendefinisikan variabel
     private int id;
     protected int totalFee;
-    private Job job;
+    private ArrayList<Job> jobs;
     private Calendar date;
     private Jobseeker jobseeker;
-    private PaymentType paymentType;
     private InvoiceStatus InvoiceStatus;
 
     /**
      * Constructor untuk object dari class Invoice
      * @param id id dari Invoice
-     * @param idJob job id dari Invoice
-     * @param date tanggal dari Invoice
-     * @param objek jobseeker dari class Jobseeker
      */
-    public Invoice(int id, Job job, Jobseeker jobseeker, InvoiceStatus InvoiceStatus)
+    public Invoice(int id, ArrayList<Job> job, Jobseeker jobseeker)
     {
         // initialise instance variables
         this.id = id;
-        this.job = job;
+        this.jobs = jobs;
         this.jobseeker = jobseeker;
-        this.InvoiceStatus = InvoiceStatus;
+        this.InvoiceStatus = InvoiceStatus.OnGoing;
+        this.date = Calendar.getInstance();
         LocalDate localDate = LocalDate.now();
         setDate(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
     }
@@ -49,9 +47,9 @@ public abstract class Invoice
      * getter job id dari Invoice
      * @return IdJob dari Invoice
      */
-    public Job getJob()
+    public ArrayList<Job> getJobs()
     {
-        return this.job;
+        return jobs;
     }
     
     /**
@@ -60,7 +58,7 @@ public abstract class Invoice
      */
     public Calendar getDate()
     {
-        return this.date;
+        return date;
     }
     
     /**
@@ -87,15 +85,11 @@ public abstract class Invoice
     public void setId(int id){ 
         this.id = id;
     }
-    
-    /**
-     * setter job id dari Invoice
-     * @param IdJob dari Invoice
-     */
-    public void Job(Job job){ 
-        this.job = job;
+
+    public void setJobs(ArrayList<Job> jobs){
+        this.jobs = jobs;
     }
-    
+
     /**
      * setter tanggal dari Invoice
      * @param date dari Invoice
@@ -110,24 +104,16 @@ public abstract class Invoice
     }
     
     /**
-     * setter total gaji dari Invoice
-     * @param TotalFee dari Invoice
      */
     public abstract void setTotalFee();
     
     /**
-     * setter jobseeker menggunakan objek dari class Jobseeker
-     * @param objek jobseeker dari class Jobseeker
      */
     public void setJobseeker(Jobseeker jobseeker){ 
         this.jobseeker = jobseeker;
     }
-    
-    public void setPaymentType(PaymentType paymentType){ 
-        this.paymentType = paymentType;
-    }
-    
-    public void setInvoiceStatus(InvoiceStatus InvoiceStatus){ 
+
+    public void setInvoiceStatus(InvoiceStatus InvoiceStatus){
         this.InvoiceStatus = InvoiceStatus;
     }
     /**

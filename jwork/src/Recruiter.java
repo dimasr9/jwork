@@ -1,11 +1,11 @@
+import java.util.ArrayList;
 
 /**
  *
  * @author Dimas Radhitya
  * @version Modul 2 - 25 Maret 2021
  */
-public class Recruiter
-{
+public class Recruiter extends ArrayList<Recruiter> {
     // Mendefinisikan variabel
     private int id;
     private String name, email, phoneNumber;

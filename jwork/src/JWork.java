@@ -10,14 +10,32 @@ public class JWork
 {
     public static void main(String[] args){
         Location tempat_lahir = new Location("Jakarta", "Jakarta Selatan", "Rumah Kedua");
-        Recruiter praktikan = new Recruiter(1, "Dimas", "halo@gmail.com", "08568406688", tempat_lahir);
+
+        DatabaseRecruiter.addRecruiter( new Recruiter(1, "Dimas", "dimas@gmail.com", "08568406688", tempat_lahir));
+
+        DatabaseJobseeker.addJobseeker((new Jobseeker(1, "Dimas", "dimas@gmail.com", "password")));
+        DatabaseJobseeker.addJobseeker((new Jobseeker(2, "Dimas", "dimas@gmail.com", "password")));
+        DatabaseJobseeker.addJobseeker((new Jobseeker(3, "Ferlinda", "ferlinda@gmail.com", "password")));
+
+
+        DatabaseJob.addJob((new Job(1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
+        DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(2), 10, JobCategory.WebDeveloper)));
+        DatabaseJob.addJob((new Job(3, "Senior Designer", DatabaseRecruiter.getRecruiterById(3), 10, JobCategory.DataAnalyst)));
+
+        DatabaseJobseeker.getDatabaseJobseeker();
+        DatabaseJobseeker.getDatabaseJobseeker();
+
+
+
+
+        //Recruiter praktikan = new Recruiter(1, "Dimas", "halo@gmail.com", "08568406688", tempat_lahir);
         //Jobseeker jobseeker1 = new Jobseeker(1, "Lala", "halo@gmail.com", "password", "18 maret 2020");
-        Bonus bonus1 = new Bonus(1, "Hahaha", 5, 2, true);
-        Bonus bonus2 = new Bonus(2, null, 5, 7, true);
-        Bonus bonus3 = new Bonus(3, null, 5, 3, true);
-        Jobseeker jobseeker1 = new Jobseeker(1, "Dimas",".haha@gmail.com", "aaaa", new GregorianCalendar(2021,5,20) );
-        Jobseeker jobseeker2 = new Jobseeker(2, "Dimas2", "dimas@gmail.com", "McLarenP1", 2020, 12, 20 );
-        Jobseeker jobseeker3 = new Jobseeker(3, "Dimas3","dimasr@gmail.com", "McLarenP1" );
+        //Bonus bonus1 = new Bonus(1, "Hahaha", 5, 2, true);
+        //Bonus bonus2 = new Bonus(2, null, 5, 7, true);
+        //Bonus bonus3 = new Bonus(3, null, 5, 3, true);
+        //Jobseeker jobseeker1 = new Jobseeker(1, "Dimas",".haha@gmail.com", "aaaa", new GregorianCalendar(2023,4,20) );
+        //Jobseeker jobseeker2 = new Jobseeker(2, "Dimas2", "dimas@gmail.com", "McLarenP1", 2020, 12, 20 );
+        //Jobseeker jobseeker3 = new Jobseeker(3, "Dimas3","dimasr@gmail.com", "McLarenP1" );
         
         //jobseeker1.toString();
         //System.out.println(jobseeker1.toString());
@@ -30,22 +48,21 @@ public class JWork
         //jobseeker1.setPassword("McLarenP1");
         //Calendar date1 = new GregorianCalendar();
         //System.out.println(jobseeker1.toString());
-        Job pekerjaan = new Job(1, "Senior Designer", praktikan, 10, JobCategory.WebDeveloper);
+        //Job pekerjaan = new Job(1, "Senior Designer", praktikan, 10, JobCategory.WebDeveloper);
         
-        EwalletPayment ewallet1 = new EwalletPayment(1, pekerjaan, jobseeker1, bonus1, InvoiceStatus.OnGoing);
+        //EwalletPayment ewallet1 = new EwalletPayment(1, pekerjaan, jobseeker1, bonus1, InvoiceStatus.OnGoing);
         //EwalletPayment ewallet2 = new EwalletPayment(2, pekerjaan, "18 maret 2020", jobseeker1, bonus2, InvoiceStatus.OnGoing);
         //EwalletPayment ewallet3 = new EwalletPayment(3, pekerjaan, "18 maret 2020", jobseeker1, bonus3, InvoiceStatus.OnGoing);
-        BankPayment bankpayment1 = new BankPayment(1, pekerjaan, jobseeker1, InvoiceStatus.Finished);
+        //BankPayment bankpayment1 = new BankPayment(1, pekerjaan, jobseeker1, InvoiceStatus.Finished);
         //BankPayment bankpayment2 = new BankPayment(1, pekerjaan, "20 maret 2020", jobseeker1, 10, InvoiceStatus.Finished);
-        ewallet1.toString();
+        //ewallet1.toString();
         //ewallet2.setTotalFee();
         //ewallet3.setTotalFee();
-        bankpayment1.toString();
+        //bankpayment1.toString();
         //bankpayment2.setTotalFee();
-        System.out.println(ewallet1.toString());
-        System.out.println(bankpayment1.toString());
-        
-        System.out.println(2+5+"sembilan");
+        //System.out.println(ewallet1.toString());
+        //System.out.println(bankpayment1.toString());
+
         //bankpayment1.printData();
         //bankpayment2.printData();
         //ewallet1.printData();

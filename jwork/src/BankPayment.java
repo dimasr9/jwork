@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 /**
@@ -13,20 +14,18 @@ public class BankPayment extends Invoice
     private static final PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
     private int adminFee = 0;
     
-    public BankPayment(int id, Job job, Jobseeker jobseeker, 
-    InvoiceStatus invoiceStatus){
-        super(id, job, jobseeker, invoiceStatus);
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker){
+        super(id, jobs, jobseeker);
     }
     
-    public BankPayment(int id, Job job, Jobseeker jobseeker, 
-    int adminFee, InvoiceStatus invoiceStatus){
-        super(id, job, jobseeker, invoiceStatus);
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker,
+    int adminFee){
+        super(id, jobs, jobseeker);
         this.adminFee = adminFee;
     }
     /**
      * An example of a method - replace this comment with your own
      *
-     * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
     public PaymentType getPaymentType()
@@ -49,28 +48,28 @@ public class BankPayment extends Invoice
     
     public void setTotalFee()
     {
-        // put your code here
-        super.totalFee = super.getJob().getFee();
+        if (adminFee != 0) {
+            totalFee -= adminFee;
+        }
     }
     
     public String toString()
     {
-        String datex = "";
-        String pattern = "dd-MM-yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         Date date = getDate().getTime();
-        if (date != null){
-        datex = simpleDateFormat.format(date);
+        String strDate = "";
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy");
+            strDate = dateFormat.format(date);
         }
-        return 
-            "Id = "+ super.getId() +
-            "\nJob = "+ super.getJob().getCategory() +
-            "\nDate = " + date +
-            "\nJobseeker  = "+ super.getJobseeker().getName() +
-            "\nAdmin = "+ adminFee +
-            "\nFee = "+ super.totalFee +
-            "\nStatus = "+ super.getInvoiceStatus().toString() +
-            "\nPayment Type = "+ PAYMENT_TYPE.toString();
+        String str =    "====== Ewallet Payment ======" +
+                "\nID           : " + getId() +
+                "\nJobs         : " + getJobs() +
+                "\nDate         : " + strDate +
+                "\nSeeker       : " + getJobseeker().getName() +
+                "\nFee : " + totalFee +
+                "\nStatus       : " + getInvoiceStatus().toString() +
+                "\nPayment Type : " + PAYMENT_TYPE.toString();
+        return str;
     }
     /*@Override
     public void printData()

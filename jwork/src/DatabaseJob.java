@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  *
@@ -7,37 +8,66 @@
 public class DatabaseJob
 {
     // Mendefinisikan variabel
-    private static String[] listJob;
-    
-    /**
-     * method untuk menambahkan objek database job
-     * @return nilai false
-     */
-    public static boolean addJob(Job job){
-        return false;
-    }
-    
-    /**
-     * method untuk menghapus objek database job
-     * @return nilai false
-     */
-    public static boolean removeJob(Job job){
-       return false;
-    }
+    private static ArrayList<Job> JOB_DATABASE;
+    private static int lastId = 0;
     
     /**
      * getter objek Database Job
      * @return nilai null
      */
-    public static Job getJob(){
-       return null; 
+
+    public static ArrayList<Job> getJobDatabase(){
+        return JOB_DATABASE;
     }
-    
-    /**
-     * getter list object Database Job
-     * @return nilai null
-     */
-    public static String[] getListJob(){
-       return null; 
-    } 
+
+    public static int getLastId(){
+        return lastId;
+    }
+
+    public Job getJobById(int id){
+        for (int i=0; i < JOB_DATABASE.size(); i++) {
+            if(JOB_DATABASE.get(i).getId() == id){
+                return JOB_DATABASE.get(i);
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Job> getJobByRecruiter(int recruiterId){
+        ArrayList<Job> temp = new ArrayList<>();
+        for (int i=0; i < JOB_DATABASE.size(); i++) {
+            if(JOB_DATABASE.get(i).getRecruiter().getId() == recruiterId){
+                temp.add(JOB_DATABASE.get(i));
+                return temp;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Job> getJobByCategory(JobCategory category){
+        ArrayList<Job> temp = new ArrayList<>();
+        for (int i=0; i < JOB_DATABASE.size(); i++) {
+            if(JOB_DATABASE.get(i).getCategory() == category){
+                temp.add(JOB_DATABASE.get(i));
+                return temp;
+            }
+        }
+        return null;
+    }
+
+    public static boolean addJob(Job job){
+        JOB_DATABASE.add(job);
+        lastId = job.getId();
+        return true;
+    }
+
+    public static boolean removeJob(int id){
+        for (int i=0; i < JOB_DATABASE.size(); i++) {
+            if(JOB_DATABASE.get(i).getId() == id) {
+                JOB_DATABASE.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

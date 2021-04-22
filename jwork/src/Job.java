@@ -88,7 +88,6 @@ public class Job
     
     /**
      * setter recruiter menggunakan objek dari class Recruiter
-     * @param objek recruiter dari class Recruiter
      */
     public void setRecruiter(Recruiter recruiter){
         this.recruiter = recruiter;
