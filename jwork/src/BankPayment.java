@@ -61,7 +61,7 @@ public class BankPayment extends Invoice
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy");
             strDate = dateFormat.format(date);
         }
-        String str =    "====== Ewallet Payment ======" +
+        String str =    "====== Bank Payment ======" +
                 "\nID           : " + getId() +
                 "\nJobs         : " + getJobs() +
                 "\nDate         : " + strDate +

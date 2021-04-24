@@ -113,8 +113,8 @@ public abstract class Invoice
         this.jobseeker = jobseeker;
     }
 
-    public void setInvoiceStatus(InvoiceStatus InvoiceStatus){
-        this.InvoiceStatus = InvoiceStatus;
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus){
+        this.InvoiceStatus = invoiceStatus;
     }
     /**
      * method mencetak total gaji dari Invoice

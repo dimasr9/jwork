@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DatabaseBonus
 {
     // Mendefinisikan variabel
-    private static ArrayList<Bonus> BONUS_DATABASE;
+    private static ArrayList<Bonus> BONUS_DATABASE = new ArrayList<Bonus>();
     private static int lastId;
 
 
@@ -39,6 +39,7 @@ public class DatabaseBonus
     }
 
     public static Bonus getBonusByReferralCode(String referralCode){
+
         for (int i=0; i < BONUS_DATABASE.size(); i++) {
             if(BONUS_DATABASE.get(i).getReferralCode()== referralCode){
                 return BONUS_DATABASE.get(i);

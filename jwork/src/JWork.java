@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /**
@@ -18,20 +19,50 @@ public class JWork
         DatabaseJobseeker.addJobseeker((new Jobseeker(3, "Ferlinda", "ferlinda@gmail.com", "password")));
 
 
+        //DatabaseJob.addJob((new Job(1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
+        //DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
+        //DatabaseJob.addJob((new Job(3, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.DataAnalyst)));
+
+        ArrayList<Jobseeker> DbJobs = DatabaseJobseeker.getDatabaseJobseeker()
+
+        for (Jobseeker js : DbJobs) {
+            System.out.println(js.toString());
+        }
+
+        DatabaseBonus.addBonus((new Bonus(1, "Hahaha", 5, 3, false)));
+        DatabaseBonus.addBonus((new Bonus(2, "Hahaha", 5, 3, false)));
+
+        ArrayList<Bonus> DbBonus = DatabaseBonus.getBonusDatabase();
+
         DatabaseJob.addJob((new Job(1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
-        DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(2), 10, JobCategory.WebDeveloper)));
-        DatabaseJob.addJob((new Job(3, "Senior Designer", DatabaseRecruiter.getRecruiterById(3), 10, JobCategory.DataAnalyst)));
+        DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
 
-        DatabaseJobseeker.getDatabaseJobseeker();
-        DatabaseJobseeker.getDatabaseJobseeker();
+        ArrayList<Job> DbJob1 = DatabaseJob.getJobDatabase();
+        ArrayList<Job> DbJob2 = DatabaseJob.getJobDatabase();
 
+        DatabaseInvoice.addInvoice(new EwalletPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(1), DatabaseBonus.getBonusById(1)));
 
+        int lastid = DatabaseJobseeker.getLastId();
+        ArrayList<Invoice> tempInvc = DatabaseInvoice.getInvoiceByJobseeker(lastid);
+        for(Invoice invc : tempInvc){
+            invc.setTotalFee();
+        }
+        DatabaseInvoice.addInvoice(new BankPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(1)));
 
+        ArrayList<Invoice> DbInvoice = DatabaseInvoice.getInvoiceDatabase();
+
+        for (Invoice inv : DbInvoice) {
+            System.out.println(inv.toString());
+        }
+
+        int lastid = DatabaseJobseeker.getLastId();
+        ArrayList<Invoice> tempInvcStat = DatabaseInvoice.getInvoiceByJobseeker(lastid);
+        for(Invoice invc : tempInvcStat){
+            invc.setInvoiceStatus(invc);
+        }
 
         //Recruiter praktikan = new Recruiter(1, "Dimas", "halo@gmail.com", "08568406688", tempat_lahir);
         //Jobseeker jobseeker1 = new Jobseeker(1, "Lala", "halo@gmail.com", "password", "18 maret 2020");
-        //Bonus bonus1 = new Bonus(1, "Hahaha", 5, 2, true);
-        //Bonus bonus2 = new Bonus(2, null, 5, 7, true);
         //Bonus bonus3 = new Bonus(3, null, 5, 3, true);
         //Jobseeker jobseeker1 = new Jobseeker(1, "Dimas",".haha@gmail.com", "aaaa", new GregorianCalendar(2023,4,20) );
         //Jobseeker jobseeker2 = new Jobseeker(2, "Dimas2", "dimas@gmail.com", "McLarenP1", 2020, 12, 20 );
