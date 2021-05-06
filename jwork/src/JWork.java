@@ -10,40 +10,100 @@ import java.util.GregorianCalendar;
 public class JWork
 {
     public static void main(String[] args){
-        Location tempat_lahir = new Location("Jakarta", "Jakarta Selatan", "Rumah Kedua");
+        //Location tempat_lahir = new Location("Jakarta", "Jakarta Selatan", "Rumah Kedua");
 
-        DatabaseRecruiter.addRecruiter( new Recruiter(1, "Dimas", "dimas@gmail.com", "08568406688", tempat_lahir));
-        try {
-            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 10000, 3000, "abcd", false));
-            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 50000, 15000, "abcd", true));
-            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 10000, 3000, "haha", false));
-            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 50000, 15000, "hehe", true));
-        } catch (ReferralCodeAlreadyExistsException error) {
-            System.out.println(error.getMessage());
+        {
+            ArrayList<Jobseeker> print = new ArrayList<Jobseeker>();
+            print.add(new Jobseeker(1, "Dimas", "dimas@ui.ac.id", "abcdefg12"));
+            print.add(new Jobseeker(2, "Radhitya", "dimas@ui.ac.id", "abcdefg12"));
+            print.add(new Jobseeker(3, "Bryan", "bryan@ui.ac.id", "abcdefg12"));
+            print.add(new Jobseeker(4, "Dario", "dario@ui.ac.id", "abcdefg12"));
+
+            for (Jobseeker j : print)
+            {
+                try {
+                    DatabaseJobseeker.addJobseeker(j);
+                } catch (EmailAlreadyExistsException error) {
+                    System.out.println(error.getMessage());
+                }
+            }
         }
 
-        try {
-            DatabaseBonus.getBonusById(20);
-        } catch (BonusNotFoundException error) {
-            System.out.println(error.getMessage());
+        {
+            ArrayList<Bonus> print = new ArrayList<Bonus>();
+            print.add(new Bonus(1, 10000, 30000, "abcd", true));
+            print.add(new Bonus(2, 60000, 90000, "abcd", true));
+            print.add(new Bonus(2, 10000, 30000, "vwxy", true));
+            print.add(new Bonus(2, 60000, 90000, "vwxy1", true));
+            for (Bonus b : print)
+            {
+                try {
+                    DatabaseBonus.addBonus(b);
+                } catch (ReferralCodeAlreadyExistsException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
 
-        try {
-            DatabaseJobseeker.getJobseekerById(20);
-        } catch (JobSeekerNotFoundException error) {
-            System.out.println(error.getMessage());
+        {
+            try {
+                Jobseeker js = DatabaseJobseeker.getJobseekerById(20);
+            } catch (JobSeekerNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                Recruiter js = DatabaseRecruiter.getRecruiterById(20);
+            } catch (RecruiterNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                Job js = DatabaseJob.getJobById(20);
+            } catch (JobNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                Bonus js = DatabaseBonus.getBonusById(20);
+            } catch (BonusNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
-        try {
-            DatabaseRecruiter.getRecruiterById(20);
-        } catch (RecruiterNotFoundException error) {
-            System.out.println(error.getMessage());
+        {
+            ArrayList<Bonus> listBonus = DatabaseBonus.getBonusDatabase();
+            ArrayList<Jobseeker> listJS = DatabaseJobseeker.getDatabaseJobseeker();
+
+            for (Bonus bns : listBonus)
+                System.out.println(bns);
+
+            for (Jobseeker js : listJS)
+                System.out.println(js);
         }
 
-        try {
-            DatabaseJob.getJobById(20);
-        } catch (JobNotFoundException error) {
-            System.out.println(error.getMessage());
+        {
+            try {
+
+                Jobseeker js1 = DatabaseJobseeker.getJobseekerById(1);
+                Jobseeker js2 = DatabaseJobseeker.getJobseekerById(2);
+                Jobseeker js3 = DatabaseJobseeker.getJobseekerById(3);
+
+                Location rumah = new Location("DKI Jakarta", "Jakarta Selatan", "Rumah");
+                Recruiter rctr = new Recruiter(1, "Dimas", "dimasrdhty@ui.ac.id", "08568406688", rumah);
+                DatabaseJob.addJob(new Job(1, "Senior UI", rctr, 120000, JobCategory.UI));
+
+                DatabaseInvoice.addInvoice(new BankPayment(1, DatabaseJob.getJobDatabase(), js1));
+                DatabaseInvoice.addInvoice(new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
+                DatabaseInvoice.addInvoice(new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
+
+            } catch (JobSeekerNotFoundException e) {
+                System.out.print(e.getMessage());
+                return;
+            }
+
+//            Thread myThread = new Thread(new FeeCalculator());
+//            myThread.start();
         }
 //        DatabaseJobseeker.addJobseeker((new Jobseeker(1, "Dimas", "dimas@gmail.com", "password")));
 //        DatabaseJobseeker.addJobseeker((new Jobseeker(2, "Dimas", "dimas@gmail.com", "password")));

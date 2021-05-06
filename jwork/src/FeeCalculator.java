@@ -1,15 +1,15 @@
+import java.util.ArrayList;
+
 public class FeeCalculator implements Runnable
 {
-    Invoice invoice;
-    public FeeCalculator (Invoice invoice)
-    {
-        this.invoice = invoice;
-    }
-    @Override
-    public void run()
-    {
-        System.out.println("Calculating Invoice ID : " + invoice.getId());
-        invoice.setTotalFee();
-        System.out.println("Finish Calculating Invoice ID : " + invoice.getId());
+    public void run(){
+        ArrayList<Invoice> list = DatabaseInvoice.getInvoiceDatabase();
+        for (Invoice invc : list){
+            System.out.println("Calculating Invoice ID: "+ invc.getId());
+            invc.setTotalFee();
+            System.out.println("Finish Calculating Invoice ID: "+ invc.getId());
+
+        }
+
     }
 }

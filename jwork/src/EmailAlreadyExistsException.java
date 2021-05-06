@@ -3,7 +3,7 @@ public class EmailAlreadyExistsException extends Exception {
 
     public EmailAlreadyExistsException(Jobseeker jobseeker_input){
         super("Recruiter Email: ");
-        jobseeker_input = jobseeker_input;
+        jobseeker_error = jobseeker_input;
     }
 
     @Override
