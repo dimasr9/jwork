@@ -15,7 +15,7 @@ public class Bonus
     /**
      * Constructor for objects of class Bonus
      */
-    public Bonus(int id, String referralCode, int extraFee, int minTotalFee, boolean active)
+    public Bonus(int id, int extraFee, int minTotalFee, String referralCode, boolean active)
     {
         // initialise instance variables
         this.id = id;

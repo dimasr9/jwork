@@ -13,64 +13,95 @@ public class JWork
         Location tempat_lahir = new Location("Jakarta", "Jakarta Selatan", "Rumah Kedua");
 
         DatabaseRecruiter.addRecruiter( new Recruiter(1, "Dimas", "dimas@gmail.com", "08568406688", tempat_lahir));
+        try {
+            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 10000, 3000, "abcd", false));
+            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 50000, 15000, "abcd", true));
+            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 10000, 3000, "haha", false));
+            DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, 50000, 15000, "hehe", true));
+        } catch (ReferralCodeAlreadyExistsException error) {
+            System.out.println(error.getMessage());
+        }
 
-        DatabaseJobseeker.addJobseeker((new Jobseeker(1, "Dimas", "dimas@gmail.com", "password")));
-        DatabaseJobseeker.addJobseeker((new Jobseeker(2, "Dimas", "dimas@gmail.com", "password")));
-        DatabaseJobseeker.addJobseeker((new Jobseeker(3, "Ferlinda", "ferlinda@gmail.com", "password")));
+        try {
+            DatabaseBonus.getBonusById(20);
+        } catch (BonusNotFoundException error) {
+            System.out.println(error.getMessage());
+        }
+
+        try {
+            DatabaseJobseeker.getJobseekerById(20);
+        } catch (JobSeekerNotFoundException error) {
+            System.out.println(error.getMessage());
+        }
+
+        try {
+            DatabaseRecruiter.getRecruiterById(20);
+        } catch (RecruiterNotFoundException error) {
+            System.out.println(error.getMessage());
+        }
+
+        try {
+            DatabaseJob.getJobById(20);
+        } catch (JobNotFoundException error) {
+            System.out.println(error.getMessage());
+        }
+//        DatabaseJobseeker.addJobseeker((new Jobseeker(1, "Dimas", "dimas@gmail.com", "password")));
+//        DatabaseJobseeker.addJobseeker((new Jobseeker(2, "Dimas", "dimas@gmail.com", "password")));
+//        DatabaseJobseeker.addJobseeker((new Jobseeker(3, "Ferlinda", "ferlinda@gmail.com", "password")));
 
 
         //DatabaseJob.addJob((new Job(1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
         //DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
         //DatabaseJob.addJob((new Job(3, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.DataAnalyst)));
 
-        ArrayList<Jobseeker> DbJobs = DatabaseJobseeker.getDatabaseJobseeker();
+//        ArrayList<Jobseeker> DbJobs = DatabaseJobseeker.getDatabaseJobseeker();
+//
+//        for (Jobseeker js : DbJobs) {
+//            System.out.println(js.toString());
+//        }
 
-        for (Jobseeker js : DbJobs) {
-            System.out.println(js.toString());
-        }
+        //DatabaseBonus.addBonus((new Bonus(1, "Hahaha", 5, 3, false)));
+        //DatabaseBonus.addBonus((new Bonus(2, "Hahaha", 5, 3, false)));
 
-        DatabaseBonus.addBonus((new Bonus(1, "Hahaha", 5, 3, false)));
-        DatabaseBonus.addBonus((new Bonus(2, "Hahaha", 5, 3, false)));
-
-        ArrayList<Bonus> DbBonus = DatabaseBonus.getBonusDatabase();
-
-        DatabaseJob.addJob((new Job(1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
-        DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
-
-        ArrayList<Job> DbJob1 = DatabaseJob.getJobDatabase();
-        ArrayList<Job> DbJob2 = DatabaseJob.getJobDatabase();
-
-        DatabaseInvoice.addInvoice(new EwalletPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(1), DatabaseBonus.getBonusById(1)));
-
-        int lastid = DatabaseJobseeker.getLastId();
-        ArrayList<Invoice> tempInvc = DatabaseInvoice.getInvoiceByJobseeker(lastid);
-        for(Invoice invc : tempInvc){
-            invc.setTotalFee();
-        }
-        DatabaseInvoice.addInvoice(new BankPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(1)));
-
-        ArrayList<Invoice> DbInvoice = DatabaseInvoice.getInvoiceDatabase();
-
-        for (Invoice inv : DbInvoice) {
-            System.out.println(inv.toString());
-        }
-
-        ArrayList<Invoice> tempInvcStat = DatabaseInvoice.getInvoiceByJobseeker(lastid);
-        for(Invoice invc : tempInvcStat){
-            invc.setInvoiceStatus(InvoiceStatus.Finished);
-        }
-
-        DatabaseInvoice.addInvoice(new EwalletPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(2), DatabaseBonus.getBonusById(1)));
-
-        ArrayList<Bonus> tempBonus = DatabaseBonus.getBonusDatabase();
-        for(Bonus bons : tempBonus){
-            bons.setActive(true);
-        }
-
-        ArrayList<Invoice> tempInvc2 = DatabaseInvoice.getInvoiceByJobseeker(lastid);
-        for(Invoice invc : tempInvc2){
-            invc.setTotalFee();
-        }
+//        ArrayList<Bonus> DbBonus = DatabaseBonus.getBonusDatabase();
+//
+//        DatabaseJob.addJob((new Job(1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
+//        DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
+//
+//        ArrayList<Job> DbJob1 = DatabaseJob.getJobDatabase();
+//        ArrayList<Job> DbJob2 = DatabaseJob.getJobDatabase();
+//
+//        DatabaseInvoice.addInvoice(new EwalletPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(1), DatabaseBonus.getBonusById(1)));
+//
+//        int lastid = DatabaseJobseeker.getLastId();
+//        ArrayList<Invoice> tempInvc = DatabaseInvoice.getInvoiceByJobseeker(lastid);
+//        for(Invoice invc : tempInvc){
+//            invc.setTotalFee();
+//        }
+//        DatabaseInvoice.addInvoice(new BankPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(1)));
+//
+//        ArrayList<Invoice> DbInvoice = DatabaseInvoice.getInvoiceDatabase();
+//
+//        for (Invoice inv : DbInvoice) {
+//            System.out.println(inv.toString());
+//        }
+//
+//        ArrayList<Invoice> tempInvcStat = DatabaseInvoice.getInvoiceByJobseeker(lastid);
+//        for(Invoice invc : tempInvcStat){
+//            invc.setInvoiceStatus(InvoiceStatus.Finished);
+//        }
+//
+//        DatabaseInvoice.addInvoice(new EwalletPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(2), DatabaseBonus.getBonusById(1)));
+//
+//        ArrayList<Bonus> tempBonus = DatabaseBonus.getBonusDatabase();
+//        for(Bonus bons : tempBonus){
+//            bons.setActive(true);
+//        }
+//
+//        ArrayList<Invoice> tempInvc2 = DatabaseInvoice.getInvoiceByJobseeker(lastid);
+//        for(Invoice invc : tempInvc2){
+//            invc.setTotalFee();
+//        }
 
         //Recruiter praktikan = new Recruiter(1, "Dimas", "halo@gmail.com", "08568406688", tempat_lahir);
         //Jobseeker jobseeker1 = new Jobseeker(1, "Lala", "halo@gmail.com", "password", "18 maret 2020");

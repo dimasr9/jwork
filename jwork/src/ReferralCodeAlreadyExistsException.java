@@ -8,6 +8,6 @@ public class ReferralCodeAlreadyExistsException extends Exception {
 
     @Override
     public String getMessage() {
-        return super.getMessage() + referral_error.getReferralCode() + "Already Exist";
+        return super.getMessage() + referral_error.getReferralCode() + " Already Exist";
     }
 }
