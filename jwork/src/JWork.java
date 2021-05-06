@@ -23,7 +23,7 @@ public class JWork
         //DatabaseJob.addJob((new Job(2, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.WebDeveloper)));
         //DatabaseJob.addJob((new Job(3, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 10, JobCategory.DataAnalyst)));
 
-        ArrayList<Jobseeker> DbJobs = DatabaseJobseeker.getDatabaseJobseeker()
+        ArrayList<Jobseeker> DbJobs = DatabaseJobseeker.getDatabaseJobseeker();
 
         for (Jobseeker js : DbJobs) {
             System.out.println(js.toString());
@@ -55,10 +55,21 @@ public class JWork
             System.out.println(inv.toString());
         }
 
-        int lastid = DatabaseJobseeker.getLastId();
         ArrayList<Invoice> tempInvcStat = DatabaseInvoice.getInvoiceByJobseeker(lastid);
         for(Invoice invc : tempInvcStat){
-            invc.setInvoiceStatus(invc);
+            invc.setInvoiceStatus(InvoiceStatus.Finished);
+        }
+
+        DatabaseInvoice.addInvoice(new EwalletPayment(1, DbJob1, DatabaseJobseeker.getJobseekerById(2), DatabaseBonus.getBonusById(1)));
+
+        ArrayList<Bonus> tempBonus = DatabaseBonus.getBonusDatabase();
+        for(Bonus bons : tempBonus){
+            bons.setActive(true);
+        }
+
+        ArrayList<Invoice> tempInvc2 = DatabaseInvoice.getInvoiceByJobseeker(lastid);
+        for(Invoice invc : tempInvc2){
+            invc.setTotalFee();
         }
 
         //Recruiter praktikan = new Recruiter(1, "Dimas", "halo@gmail.com", "08568406688", tempat_lahir);
