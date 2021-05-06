@@ -20,23 +20,33 @@ public class DatabaseJobseeker
         return lastId;
     }
 
-    public static Jobseeker getJobseekerById(int id){
-        for (int i=0; i < JOBSEEKER_DATABASE.size(); i++) {
-            if(JOBSEEKER_DATABASE.get(i).getId() == id){
-                return JOBSEEKER_DATABASE.get(i);
+    public static Jobseeker getJobseekerById(int id) throws JobSeekerNotFoundException {
+        Jobseeker val = null;
+        try
+        {
+            for (Jobseeker js : JOBSEEKER_DATABASE)
+            {
+                if (id == js.getId())
+                {
+                    val = js;
+                }
             }
         }
-        return null;
+        catch (Exception error)
+        {
+            throw new JobSeekerNotFoundException(id);
+        }
+        return val;
     }
     /**
      * method untuk menambahkan objek database job
      * @return nilai false
      */
-    public static boolean addJobseeker(Jobseeker jobseeker){
-        for (Jobseeker jobs : JOBSEEKER_DATABASE)
-        {
-            if (jobs.getId() == jobseeker.getId()) return false;
-            if (jobs.getEmail() == jobseeker.getEmail()) return false;
+    public static boolean addJobseeker(Jobseeker jobseeker) throws EmailAlreadyExistsException{
+        for (Jobseeker js : JOBSEEKER_DATABASE) {
+            if (jobseeker.getEmail() == js.getEmail()) {
+                throw new EmailAlreadyExistsException(jobseeker);
+            }
         }
         JOBSEEKER_DATABASE.add(jobseeker);
         lastId = jobseeker.getId();
@@ -47,14 +57,16 @@ public class DatabaseJobseeker
      * method untuk menghapus objek database job
      * @return nilai false
      */
-    public static boolean removeJobseeker(int id){
-        for (int i=0; i < JOBSEEKER_DATABASE.size(); i++) {
-            if(JOBSEEKER_DATABASE.get(i).getId() == id) {
-                JOBSEEKER_DATABASE.remove(i);
+    public static boolean removeJobseeker(int id) throws JobSeekerNotFoundException{
+        for (Jobseeker js : JOBSEEKER_DATABASE)
+        {
+            if (js.getId() == id)
+            {
+                JOBSEEKER_DATABASE.remove(js);
                 return true;
             }
         }
-        return false;
+        throw new JobSeekerNotFoundException(id);
     }
 
 }
