@@ -94,8 +94,8 @@ public class JWork
                 DatabaseJob.addJob(new Job(1, "Senior UI", rctr, 120000, JobCategory.UI));
 
                 DatabaseInvoice.addInvoice(new BankPayment(1, DatabaseJob.getJobDatabase(), js1));
-                DatabaseInvoice.addInvoice((new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
-                DatabaseInvoice.addInvoice((new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
+                DatabaseInvoice.addInvoice(new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
+                DatabaseInvoice.addInvoice(new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
 
             } catch (JobSeekerNotFoundException | OngoingInvoiceAlreadyExistsException error) {
                 System.out.print(error.getMessage());
