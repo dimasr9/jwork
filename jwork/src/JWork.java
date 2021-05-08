@@ -39,8 +39,8 @@ public class JWork
             {
                 try {
                     DatabaseBonus.addBonus(b);
-                } catch (ReferralCodeAlreadyExistsException e) {
-                    System.out.println(e.getMessage());
+                } catch (ReferralCodeAlreadyExistsException error) {
+                    System.out.println(error.getMessage());
                 }
             }
         }
@@ -48,26 +48,26 @@ public class JWork
         {
             try {
                 Jobseeker js = DatabaseJobseeker.getJobseekerById(20);
-            } catch (JobSeekerNotFoundException e) {
-                System.out.println(e.getMessage());
+            } catch (JobSeekerNotFoundException error) {
+                System.out.println(error.getMessage());
             }
 
             try {
                 Recruiter js = DatabaseRecruiter.getRecruiterById(20);
-            } catch (RecruiterNotFoundException e) {
-                System.out.println(e.getMessage());
+            } catch (RecruiterNotFoundException error) {
+                System.out.println(error.getMessage());
             }
 
             try {
                 Job js = DatabaseJob.getJobById(20);
-            } catch (JobNotFoundException e) {
-                System.out.println(e.getMessage());
+            } catch (JobNotFoundException error) {
+                System.out.println(error.getMessage());
             }
 
             try {
                 Bonus js = DatabaseBonus.getBonusById(20);
-            } catch (BonusNotFoundException e) {
-                System.out.println(e.getMessage());
+            } catch (BonusNotFoundException error) {
+                System.out.println(error.getMessage());
             }
         }
 
@@ -94,13 +94,28 @@ public class JWork
                 DatabaseJob.addJob(new Job(1, "Senior UI", rctr, 120000, JobCategory.UI));
 
                 DatabaseInvoice.addInvoice(new BankPayment(1, DatabaseJob.getJobDatabase(), js1));
-                DatabaseInvoice.addInvoice(new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
-                DatabaseInvoice.addInvoice(new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
+                DatabaseInvoice.addInvoice((new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
+                DatabaseInvoice.addInvoice((new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
 
-            } catch (JobSeekerNotFoundException e) {
-                System.out.print(e.getMessage());
+            } catch (JobSeekerNotFoundException | OngoingInvoiceAlreadyExistsException error) {
+                System.out.print(error.getMessage());
                 return;
             }
+
+            try {
+                Invoice invc = DatabaseInvoice.getInvoiceById(20);
+            } catch (InvoiceNotFoundException error) {
+                System.out.println(error.getMessage());
+            }
+
+//            try {
+//                DatabaseInvoice.addInvoice(new BankPayment(1, DatabaseJob.getJobDatabase(), js1));
+//                DatabaseInvoice.addInvoice(new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
+//                DatabaseInvoice.addInvoice(new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
+//            } catch (InvoiceNotFoundException error) {
+//                System.out.print(error.getMessage());
+//                return;
+//            }
 
 //            Thread myThread = new Thread(new FeeCalculator());
 //            myThread.start();
