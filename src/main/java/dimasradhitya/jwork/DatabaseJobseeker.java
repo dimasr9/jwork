@@ -71,4 +71,19 @@ public class DatabaseJobseeker
         throw new JobSeekerNotFoundException(id);
     }
 
+    public static Jobseeker jobseekerLogin(String email, String password){
+        Jobseeker val = null;
+        for (Jobseeker js : JOBSEEKER_DATABASE)
+        {
+            if (email == js.getEmail() && password == js.getPassword())
+            {
+                val = js;
+            }
+            else{
+                return null;
+            }
+        }
+        return val;
+    }
+
 }

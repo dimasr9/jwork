@@ -45,7 +45,7 @@ public class DatabaseJob
         return val;
     }
 
-    public ArrayList<Job> getJobByRecruiter(int recruiterId){
+    public static ArrayList<Job> getJobByRecruiter(int recruiterId){
         ArrayList<Job> temp = new ArrayList<>();
         for (int i=0; i < JOB_DATABASE.size(); i++) {
             if(JOB_DATABASE.get(i).getRecruiter().getId() == recruiterId){
@@ -56,7 +56,7 @@ public class DatabaseJob
         return null;
     }
 
-    public ArrayList<Job> getJobByCategory(JobCategory category){
+    public static ArrayList<Job> getJobByCategory(JobCategory category){
         ArrayList<Job> temp = new ArrayList<>();
         for (int i=0; i < JOB_DATABASE.size(); i++) {
             if(JOB_DATABASE.get(i).getCategory() == category){
