@@ -46,7 +46,7 @@ public class DatabaseRecruiter
 
     public static boolean addRecruiter(Recruiter recruiter){
         RECRUITER_DATABASE.add(recruiter);
-        lastId = recruiter.getId();
+        lastId = RECRUITER_DATABASE.size()-1;
         return true;
     }
 
