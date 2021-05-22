@@ -10,9 +10,7 @@ import java.util.ArrayList;
 public class RecruiterController {
     @RequestMapping("")
     public ArrayList<Recruiter> getAllRecruiter(){
-        ArrayList<Recruiter> rctr = null;
-        rctr = DatabaseRecruiter.getRecruiterDatabase();
-        return rctr;
+        return DatabaseRecruiter.getRecruiterDatabase();
     }
 
     @RequestMapping("/{id}")
