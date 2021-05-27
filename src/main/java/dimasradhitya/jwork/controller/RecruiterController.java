@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @RequestMapping("/recruiter")
 @RestController
 public class RecruiterController {
-    @RequestMapping("")
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ArrayList<Recruiter> getAllRecruiter(){
         return DatabaseRecruiter.getRecruiterDatabase();
     }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Dimas Radhitya
  * @version Modul 2 - 25 Maret 2021
  */
-public class Recruiter extends ArrayList<Recruiter> {
+public class Recruiter {
     // Mendefinisikan variabel
     private int id;
     private String name, email, phoneNumber;
@@ -105,7 +105,7 @@ public class Recruiter extends ArrayList<Recruiter> {
     
     /**
      * setter lokasi dari class lokasi
-     * @param lokasi dari class lokasi
+     * @param location dari class lokasi
      */
     public void setLocation(Location location){
         this.location = location; 

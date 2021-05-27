@@ -26,7 +26,7 @@ public class BonusController {
     public Bonus addBonus(@RequestParam(value="referralCode") String referralCode,
                           @RequestParam(value="extraFee") int extraFee,
                           @RequestParam(value="minTotalFee") int minTotalFee,
-                          @RequestParam boolean active)
+                          @RequestParam(value="active") boolean active)
             throws ReferralCodeAlreadyExistsException{
         Bonus bonus = new Bonus(DatabaseBonus.getLastId()+1, minTotalFee, extraFee, referralCode, active);
         if (DatabaseBonus.addBonus(bonus)){
