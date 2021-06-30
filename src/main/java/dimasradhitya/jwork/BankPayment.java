@@ -15,10 +15,23 @@ public class BankPayment extends Invoice
     private static final PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
     private int adminFee = 0;
     
+    /**
+     * constructor untuk bank payment
+     * @param id
+     * @param jobs
+     * @param jobseeker
+     */
     public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker){
         super(id, jobs, jobseeker);
     }
     
+    /**
+     * constructor untuk bank payment
+     * @param id
+     * @param jobs
+     * @param jobseeker
+     * @param adminFee
+     */
     public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker,
     int adminFee){
         super(id, jobs, jobseeker);

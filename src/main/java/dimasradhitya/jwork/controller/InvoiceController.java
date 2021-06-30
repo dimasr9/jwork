@@ -6,37 +6,98 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Class yang menyimpan fungsi-fungsi controller invoice
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 @RequestMapping("/invoice")
 @RestController
 public class InvoiceController {
+
+    /**
+     * mapping untuk mendapatkan database invoice
+     * @return database invoice
+     */
     @RequestMapping("")
     public ArrayList<Invoice> getAllInvoice(){
         return DatabaseInvoice.getInvoiceDatabase();
     }
 
+    /**
+     * mapping untuk mendapatkan database invoice dari id
+     * @param id
+     * @return database invoice
+     * @throws SQLException
+     */
     @RequestMapping("/{id}")
     public Invoice getInvoiceById(@PathVariable int id) throws SQLException {
-        Invoice invc = null;
+        
+        Invoice invoice = null;
+        try {
+            invoice = DatabaseInvoice.getInvoiceById(id);
+        } catch (InvoiceNotFoundException e) {
+            e.getMessage();
+            return null;
+        }
+        return invoice;
+       
+        /* Invoice invc = null;
         invc = DatabaseInvoicePostgre.getInvoiceById(id);
-        return invc;
+        return invc; */
     }
 
+    /**
+     * mapping untuk mendapatkan database invoice dari jobseeker id
+     * @param JobseekerId
+     * @return database invoice
+     * @throws SQLException
+     */
     @RequestMapping(value = "/Jobseeker/{JobseekerId}", method = RequestMethod.GET)
     public ArrayList<Invoice> getInvoiceByJobseeker(@PathVariable int JobseekerId) throws SQLException {
-        ArrayList<Invoice> invc = null;
+        
+        ArrayList<Invoice> invoice = null;
+        invoice = DatabaseInvoice.getInvoiceByJobseeker(JobseekerId);
+        return invoice;
+       
+        /* ArrayList<Invoice> invc = null;
         invc = DatabaseInvoicePostgre.getInvoiceByJobseeker(JobseekerId);
-        return invc;
+        return invc; */
     }
 
+    /**
+     * mapping untuk merubah status invoice
+     * @param id
+     * @param invoiceStatus
+     * @return menambahkan database invoice
+     * @throws InvoiceNotFoundException
+     * @throws SQLException
+     */
     @RequestMapping(value = "/InvoiceStatus/{id}", method = RequestMethod.PUT)
     public Invoice changeInvoiceStatus(@RequestParam(value="id") int id,
                                        @RequestParam(value="invoiceStatus") InvoiceStatus invoiceStatus)
             throws InvoiceNotFoundException, SQLException {
+        
         DatabaseInvoice.changeInvoiceStatus(id, invoiceStatus);
+        try {
+            Invoice invoice = DatabaseInvoice.getInvoiceById(id);
+            return invoice;
+        } catch (InvoiceNotFoundException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+       
+        /* DatabaseInvoice.changeInvoiceStatus(id, invoiceStatus);
         Invoice invc = DatabaseInvoicePostgre.getInvoiceById(id);
-        return invc;
+        return invc; */
     }
 
+    /**
+     * 
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Boolean removeInvoice(@RequestParam(value = "id") int id){
         try{
@@ -47,11 +108,40 @@ public class InvoiceController {
         }
         return true;
     }
+
+    /**
+     * mappping untuk menambahkan payment ewallet
+     * @param jobIdList
+     * @param jobseekerId
+     * @param adminFee
+     * @return menambahkan database invoice
+     * @throws SQLException
+     * @throws JobSeekerNotFoundException
+     */
     @RequestMapping(value = "/createBankPayment", method = RequestMethod.POST)
     public Invoice addBankPayment(@RequestParam(value = "jobIdList") ArrayList<Integer> jobIdList,
                                   @RequestParam(value = "jobseekerId") int jobseekerId,
-                                  @RequestParam(value = "adminFee") int adminFee) throws SQLException{
-        Invoice invoice = null;
+                                  @RequestParam(value = "adminFee") int adminFee) throws SQLException, JobSeekerNotFoundException{
+            ArrayList<Job> job = new ArrayList<>();
+            for (int jobs : jobIdList) {
+            try {
+                job.add(DatabaseJob.getJobById(jobs));
+            } catch (JobNotFoundException e) {
+                System.out.println(e.getMessage());
+                }
+            }
+            try {
+                Invoice invoice = new BankPayment(DatabaseInvoice.getLastId()+1, job,
+                DatabaseJobseeker.getJobseekerById(jobseekerId), adminFee);
+                DatabaseInvoice.addInvoice(invoice);
+                invoice.setTotalFee();
+                return invoice;
+            } catch (JobSeekerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+       
+        /* Invoice invoice = null;
         ArrayList<Job> jobs = new ArrayList<Job>();
         for (Integer integer : jobIdList) {
             jobs.add(DatabaseJobPostgre.getJobById(integer));
@@ -68,15 +158,39 @@ public class InvoiceController {
             return invoice;
         } else {
             return null;
-        }
+        } */
     }
 
+    /**
+     * mappping untuk menambahkan payment ewallet
+     * @param jobIdList
+     * @param jobseekerId
+     * @param referralCode
+     * @return menambahkan database invoice
+     * @throws SQLException
+     */
     @RequestMapping(value = "/createEWalletPayment", method = RequestMethod.POST)
     public Invoice addEWalletPayment(@RequestParam(value = "jobIdList") ArrayList<Integer> jobIdList,
                                   @RequestParam(value = "jobseekerId") int jobseekerId,
                                   @RequestParam(value = "referralCode") String referralCode) 
-            throws SQLException{
-                Invoice invoice = null;
+        throws SQLException{
+            try{
+                ArrayList<Job> jobs = new ArrayList<Job>();
+                for (Integer id : jobIdList){
+                    Job job = DatabaseJob.getJobById(id);
+                    jobs.add(job);
+                }
+                Jobseeker jobseeker = DatabaseJobseeker.getJobseekerById(jobseekerId);
+                EwalletPayment ep = new EwalletPayment(DatabaseInvoice.getLastId()+1, jobs, jobseeker, DatabaseBonus.getBonusByReferralCode(referralCode));
+                DatabaseInvoice.addInvoice(ep);
+                return ep;
+                } catch (JobSeekerNotFoundException | JobNotFoundException | OngoingInvoiceAlreadyExistsException e){
+                    System.out.println(e.getMessage());
+                }
+                return null;
+        }
+       
+                /* Invoice invoice = null;
                 ArrayList<Job> jobs = new ArrayList<Job>();
                 System.err.println("Jobseeker Id: " + jobseekerId);
                 for (int integer : jobIdList) {
@@ -94,7 +208,5 @@ public class InvoiceController {
                     return invoice;
                 } else {
                     return null;
-                }
-    }
-
+                } */
 }

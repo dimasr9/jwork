@@ -2,8 +2,6 @@ package dimasradhitya.jwork;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -155,34 +153,32 @@ public class DatabaseJobseekerPostgre {
     public static Jobseeker getJobseeker(String email2, String password2)
     {
         Connection c = connection();
-        PreparedStatement statement;
-        Calendar joinDate = new GregorianCalendar();
-        Jobseeker jobseeker = null;
-
+        PreparedStatement stmt;
+        int id = 0;
+        String name = null;
+        String email = null;
+        String password = null;
+        Jobseeker Jobseeker = null;
         try {
-            String sql = "SELECT id, name, email, password, joinDate FROM jobseeker WHERE email =? AND password = ?;";
-            statement = c.prepareStatement(sql);
-            statement.setString(1, email2);
-            statement.setString(2, password2);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String email = resultSet.getString("email");
-                String password = resultSet.getString("password");
-                Date tanggal = resultSet.getDate("joinDate");
-                jobseeker = new Jobseeker(id, name, email, password);
-
-                joinDate.setTime(tanggal);
-                jobseeker.setJoinDate(joinDate);
+            String sql = "SELECT id, name, email, password FROM Jobseeker WHERE email=? AND password=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setString(1, email2);
+            stmt.setString(2, password2);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("id");
+                name = rs.getString("name").stripTrailing();
+                email = rs.getString("email");
+                password = rs.getString("password");
             }
-            statement.close();
+            stmt.close();
             c.close();
-            return jobseeker;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Jobseeker = new Jobseeker(id, name, email, password);
+            return Jobseeker;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return jobseeker;
+        return Jobseeker;
     }
 
     /**

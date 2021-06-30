@@ -93,7 +93,6 @@ public class DatabaseJobPostgre extends DatabaseConnectionPostgre
     {
         Connection c = connection();
         PreparedStatement stmt;
-        Job jobs = null;
         int fee = job.getFee();
         String name = job.getName();
         JobCategory category = job.getCategory();
@@ -108,7 +107,6 @@ public class DatabaseJobPostgre extends DatabaseConnectionPostgre
             stmt.setInt(3, recruiter.getId());
             stmt.setInt(4,fee);
             stmt.setString(5, category.toString());
-            int update = stmt.executeUpdate();
             ResultSet resultSet = stmt.getGeneratedKeys();
             int id = 1;
             while (resultSet.next()) {
@@ -212,7 +210,6 @@ public class DatabaseJobPostgre extends DatabaseConnectionPostgre
             String sql = "DELETE FROM job WHERE id = ?;";
             stmt = c.prepareStatement(sql);
             stmt.setInt(1, id);
-            ResultSet resultSet = stmt.executeQuery();
             stmt.close();
             c.close();
             return true;

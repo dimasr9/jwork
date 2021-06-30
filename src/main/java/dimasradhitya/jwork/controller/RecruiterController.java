@@ -5,14 +5,31 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+/**
+ * Class yang menyimpan fungsi-fungsi controller recruiter
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 @RequestMapping("/recruiter")
 @RestController
 public class RecruiterController {
+
+    /**
+     * mapping untuk mendapatkan database recruiter
+     * @return database recruiter
+     */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ArrayList<Recruiter> getAllRecruiter(){
         return DatabaseRecruiter.getRecruiterDatabase();
     }
 
+    /**
+     * mapping untuk mendapatkan database recruiter dari id
+     * @param id
+     * @return database recruiter
+     * @throws RecruiterNotFoundException
+     */
     @RequestMapping("/{id}")
     public Recruiter getRecruiterById(@PathVariable int id) {
         Recruiter rctr = null;
@@ -25,6 +42,16 @@ public class RecruiterController {
         return rctr;
     }
 
+    /**
+     * method mapping untuk post recruiter
+     * @param name
+     * @param email
+     * @param phoneNumber
+     * @param province
+     * @param city
+     * @param description
+     * @return database recruiter
+     */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Recruiter addRecruiter(@RequestParam(value ="name") String name,
                                   @RequestParam(value ="email") String email,
