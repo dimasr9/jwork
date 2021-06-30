@@ -1,5 +1,11 @@
 package dimasradhitya.jwork;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Job Seeker Not Exception
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class JobSeekerNotFoundException extends Exception {
     private int jobseeker_error;
 

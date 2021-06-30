@@ -3,6 +3,12 @@ package dimasradhitya.jwork;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Database Connection dengan koneksi ke Postgresql
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class DatabaseConnectionPostgre {
 
     /**

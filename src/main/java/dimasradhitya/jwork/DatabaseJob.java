@@ -23,7 +23,7 @@ public class DatabaseJob
     }
 
     /**
-     * 
+     * getter untuk mendapatkan last id
      * @return int last id
      */
     public static int getLastId(){
@@ -31,7 +31,7 @@ public class DatabaseJob
     }
 
     /**
-     * 
+     * method untuk mendapatkan database job dari id
      * @param id
      * @return
      * @throws JobNotFoundException
@@ -57,7 +57,7 @@ public class DatabaseJob
     }
 
     /**
-     * 
+     * method untuk mendapatkan database job dari recruiter id
      * @param recruiterId
      * @return
      */
@@ -73,7 +73,7 @@ public class DatabaseJob
     }
 
     /**
-     * 
+     * method untuk mendapatkan database job dari category
      * @param category
      * @return
      */
@@ -89,7 +89,7 @@ public class DatabaseJob
     }
 
     /**
-     * 
+     * method untuk menambahkan database job
      * @param job
      * @return
      */
@@ -101,7 +101,7 @@ public class DatabaseJob
     }
 
     /**
-     * 
+     * method untuk menghapus database job
      * @param id
      * @return
      * @throws JobNotFoundException

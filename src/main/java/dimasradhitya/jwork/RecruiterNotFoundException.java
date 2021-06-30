@@ -1,5 +1,11 @@
 package dimasradhitya.jwork;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Recruiter Not Found Exception
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class RecruiterNotFoundException extends Exception {
     private int recruiter_error;
 

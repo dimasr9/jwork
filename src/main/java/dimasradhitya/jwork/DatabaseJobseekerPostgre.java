@@ -13,6 +13,13 @@ import java.util.regex.Pattern;
  */
 
 import static dimasradhitya.jwork.DatabaseConnectionPostgre.connection;
+
+/**
+ * Class yang menyimpan fungsi-fungsi Database Jobseeker Postgresql
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class DatabaseJobseekerPostgre {
     /**
      * method yang digunakan untuk menambahkan jobseeker
@@ -167,7 +174,7 @@ public class DatabaseJobseekerPostgre {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 id = rs.getInt("id");
-                name = rs.getString("name").stripTrailing();
+                name = rs.getString("name");
                 email = rs.getString("email");
                 password = rs.getString("password");
             }

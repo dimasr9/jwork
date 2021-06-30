@@ -1,5 +1,11 @@
 package dimasradhitya.jwork;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Email Already Exists Exception
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class EmailAlreadyExistsException extends Exception {
     private Jobseeker jobseeker_error;
 

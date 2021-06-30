@@ -27,9 +27,9 @@ public class InvoiceController {
 
     /**
      * mapping untuk mendapatkan database invoice dari id
-     * @param id
+     * @param id int id
      * @return database invoice
-     * @throws SQLException
+     * @throws SQLException SQL Exception
      */
     @RequestMapping("/{id}")
     public Invoice getInvoiceById(@PathVariable int id) throws SQLException {
@@ -50,9 +50,9 @@ public class InvoiceController {
 
     /**
      * mapping untuk mendapatkan database invoice dari jobseeker id
-     * @param JobseekerId
+     * @param JobseekerId int jobseeker id
      * @return database invoice
-     * @throws SQLException
+     * @throws SQLException SQL Exception
      */
     @RequestMapping(value = "/Jobseeker/{JobseekerId}", method = RequestMethod.GET)
     public ArrayList<Invoice> getInvoiceByJobseeker(@PathVariable int JobseekerId) throws SQLException {
@@ -68,11 +68,11 @@ public class InvoiceController {
 
     /**
      * mapping untuk merubah status invoice
-     * @param id
-     * @param invoiceStatus
+     * @param id int id
+     * @param invoiceStatus invoice status
      * @return menambahkan database invoice
-     * @throws InvoiceNotFoundException
-     * @throws SQLException
+     * @throws InvoiceNotFoundException Invoice Not Found Exception
+     * @throws SQLException SQL Exception
      */
     @RequestMapping(value = "/InvoiceStatus/{id}", method = RequestMethod.PUT)
     public Invoice changeInvoiceStatus(@RequestParam(value="id") int id,
@@ -94,9 +94,9 @@ public class InvoiceController {
     }
 
     /**
-     * 
-     * @param id
-     * @return
+     * mapping untuk menghapus invoice dari id
+     * @param id int id
+     * @return database invoice
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Boolean removeInvoice(@RequestParam(value = "id") int id){
@@ -111,9 +111,9 @@ public class InvoiceController {
 
     /**
      * mappping untuk menambahkan payment ewallet
-     * @param jobIdList
-     * @param jobseekerId
-     * @param adminFee
+     * @param jobIdList list id dari job
+     * @param jobseekerId int id jobseeker
+     * @param adminFee int admin fee
      * @return menambahkan database invoice
      * @throws SQLException
      * @throws JobSeekerNotFoundException

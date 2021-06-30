@@ -1,5 +1,11 @@
 package dimasradhitya.jwork;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Referral Code Already Exists Exception
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class ReferralCodeAlreadyExistsException extends Exception {
     private Bonus referral_error;
 

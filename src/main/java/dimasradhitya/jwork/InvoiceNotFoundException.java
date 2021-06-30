@@ -1,5 +1,11 @@
 package dimasradhitya.jwork;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Invoice Not Found Exception
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class InvoiceNotFoundException extends Exception{
     private int invoice_error;
 

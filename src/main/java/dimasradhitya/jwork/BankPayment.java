@@ -2,7 +2,6 @@ package dimasradhitya.jwork;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 /**
  * Class yang menyimpan fungsi-fungsi Bank Payment
@@ -56,15 +55,16 @@ public class BankPayment extends Invoice
         return adminFee;
     }
     
-    /** 
-     * method yang digunakan untuk mengubah admin fee
+    /**
+     * setter untuk admin fee
+     * @param adminFee
      */
     public void setAdminFee(int adminFee)
     {
         this.adminFee = adminFee;
     }
     
-    /** 
+    /**
      * method yang digunakan untuk mengubah total fee
      */
     public void setTotalFee()

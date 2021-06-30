@@ -6,12 +6,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.stream.Collectors;
+
 /**
- *
+ * Class yang menyimpan fungsi-fungsi Database Invoice Postgresql
  *
  * @author Dimas Radhitya
- * @version  30 Juni 2021
- *
+ * @version 30 Juni 2021
  */
 public class DatabaseInvoicePostgre extends DatabaseConnectionPostgre
 {

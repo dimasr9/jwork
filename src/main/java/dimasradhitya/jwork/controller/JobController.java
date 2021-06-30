@@ -28,9 +28,9 @@ public class JobController {
 
     /**
      * mapping untuk mendapatkan database job dari id
-     * @param id
+     * @param id int id
      * @return database job
-     * @throws JobNotFoundException
+     * @throws JobNotFoundException Job Not Found Exception
      */
     @RequestMapping("/{id}")
     public Job getJobById(@PathVariable int id) {

@@ -12,6 +12,14 @@ public class Bonus
     private String referralCode;
     private boolean active;
 
+    /**
+     * Constructor untuk bonus
+     * @param id
+     * @param extraFee
+     * @param minTotalFee
+     * @param referralCode
+     * @param active
+     */
     public Bonus(int id, int extraFee, int minTotalFee, String referralCode, boolean active)
     {
         // initialise instance variables
@@ -99,9 +107,9 @@ public class Bonus
         this.minTotalFee = minTotalFee;
     }
     
-    /** 
+    /**
      * method yang digunakan untuk mendapat status dari bonus
-      * @return active status dari bonus ada/tidak
+     * @param active
      */
     public void setActive(boolean active){ 
         this.active = active;

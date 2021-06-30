@@ -26,9 +26,9 @@ public class RecruiterController {
 
     /**
      * mapping untuk mendapatkan database recruiter dari id
-     * @param id
+     * @param id int id
      * @return database recruiter
-     * @throws RecruiterNotFoundException
+     * @throws RecruiterNotFoundException recruiter not found exception
      */
     @RequestMapping("/{id}")
     public Recruiter getRecruiterById(@PathVariable int id) {

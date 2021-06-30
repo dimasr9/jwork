@@ -20,6 +20,10 @@ public class DatabaseInvoice {
         return INVOICE_DATABASE;
     }
 
+    /**
+     * method yang digunakan untuk mendapatkan last id invoice
+     * @return last id
+     */
     public static int getLastId(){
         return lastId;
     }

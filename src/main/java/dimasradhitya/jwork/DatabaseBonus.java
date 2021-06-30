@@ -23,6 +23,10 @@ public class DatabaseBonus
         return BONUS_DATABASE;
     }
 
+    /**
+     * method yang digunakan untuk mendapatkan last id bonus
+     * @return last id
+     */
     public static int getLastId(){
         return lastId;
     }
@@ -83,6 +87,11 @@ public class DatabaseBonus
         return true;
     }
 
+    /**
+     * method untuk mengaktifkan bonus
+     * @param id
+     * @return
+     */
     public static boolean activeBonus(int id){
         for (int i = 0; i < BONUS_DATABASE.size(); i++) {
             if (BONUS_DATABASE.get(i).getId() == id) {
@@ -93,6 +102,11 @@ public class DatabaseBonus
         return false;
     }
 
+    /**
+     * method untuk menonaktifkan bonus
+     * @param id
+     * @return
+     */
     public static boolean deactivateBonus(int id){
         for (int i = 0; i < BONUS_DATABASE.size(); i++) {
             if (BONUS_DATABASE.get(i).getId() == id) {
@@ -103,10 +117,11 @@ public class DatabaseBonus
         return false;
     }
 
-    /** 
+    /**
      * method yang digunakan untuk menghapus bonus
-     * @param id bonus yang ingin dihapus
-     * @return boolean untuk menghapus bonus 
+     * @param id
+     * @return
+     * @throws JobNotFoundException
      */
     public static boolean removeBonus(int id) throws JobNotFoundException {
         for (Bonus bns : BONUS_DATABASE)

@@ -2,6 +2,12 @@ package dimasradhitya.jwork;
 
 import java.util.ArrayList;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Fee Calculator
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class FeeCalculator implements Runnable
 {
     public void run(){
