@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 /**
- * Write a description of class BankPayment here.
+ * Class yang menyimpan fungsi-fungsi Bank Payment
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
  */
 public class BankPayment extends Invoice
 {
-    // instance variables - replace the example below with your own
     private static final PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
     private int adminFee = 0;
     
@@ -25,33 +24,44 @@ public class BankPayment extends Invoice
         super(id, jobs, jobseeker);
         this.adminFee = adminFee;
     }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @return    the sum of x and y
+
+    /** 
+     * method yang digunakan untuk mendapatkan tipe payment 
+     * @return payment type mengebalikan nilai tipe payment
      */
     public PaymentType getPaymentType()
     {
-        // put your code here
-        return this.PAYMENT_TYPE;
+        return PAYMENT_TYPE;
     }
     
+    /** 
+     * method yang digunakan untuk mendapatkan admin fee
+     * @return int mengebalikan nilai adminfee  
+     */
     public int getAdminFee()
     {
-        // put your code here
-        return this.adminFee;
+        return adminFee;
     }
     
+    /** 
+     * method yang digunakan untuk mengubah admin fee
+     */
     public void setAdminFee(int adminFee)
     {
-        // put your code here
         this.adminFee = adminFee;
     }
     
+    /** 
+     * method yang digunakan untuk mengubah total fee
+     */
     public void setTotalFee()
     {
-        if (adminFee != 0) {
-            totalFee -= adminFee;
+        super.totalFee = 0;
+        for (Job job: getJobs()){
+            super.totalFee += job.getFee();
+        }
+        if (adminFee != 0){
+            super.totalFee -= adminFee;
         }
     }
     

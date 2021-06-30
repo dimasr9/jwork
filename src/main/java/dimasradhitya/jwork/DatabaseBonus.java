@@ -3,10 +3,10 @@ package dimasradhitya.jwork;
 import java.util.ArrayList;
 
 /**
- * Write a description of class DatabaseBonus here.
+ * Class yang menyimpan fungsi-fungsi Database Bonus
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
  */
 public class DatabaseBonus
 {
@@ -15,9 +15,9 @@ public class DatabaseBonus
     private static int lastId = 0;
 
 
-    /**
-     * getter list object Database Job
-     * @return nilai null
+    /** 
+     * method yang digunakan untuk mendapatkan Bonus
+     * @return ArrayList<Bonus> mengebalikan nilai array yang berisi Bonus
      */
     public static ArrayList<Bonus> getBonusDatabase(){
         return BONUS_DATABASE;
@@ -27,9 +27,10 @@ public class DatabaseBonus
         return lastId;
     }
 
-    /**
-     * getter objek Database Job
-     * @return nilai null
+    /** 
+     * method yang digunakan untuk mendapatkan bonus didapatkan dari id
+     * @param id int id
+     * @return int mengebalikan nilai id
      */
     public static Bonus getBonusById(int id) throws BonusNotFoundException {
         Bonus val = null;
@@ -50,6 +51,11 @@ public class DatabaseBonus
         return val;
     }
 
+    /** 
+     * method yang digunakan untuk mendapatkan bonus didapatkan dari referral code
+     * @param referralCode string referral code
+     * @return string mengebalikan nilai referral code
+     */
     public static Bonus getBonusByReferralCode(String referralCode){
         for (int i=0; i < BONUS_DATABASE.size(); i++) {
             if(BONUS_DATABASE.get(i).getReferralCode().equals(referralCode)){
@@ -59,9 +65,10 @@ public class DatabaseBonus
         return null;
     }
 
-    /**
-     * method untuk menambahkan objek database job
-     * @return nilai false
+    /** 
+     * method yang digunakan untuk menambah bonus
+     * @param bonus menerima objek bonus
+     * @return booelan untuk menambahkan bonus
      */
     public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException {
         for (Bonus bns : BONUS_DATABASE)
@@ -96,9 +103,10 @@ public class DatabaseBonus
         return false;
     }
 
-    /**
-     * method untuk menghapus objek database job
-     * @return nilai false
+    /** 
+     * method yang digunakan untuk menghapus bonus
+     * @param id bonus yang ingin dihapus
+     * @return boolean untuk menghapus bonus 
      */
     public static boolean removeBonus(int id) throws JobNotFoundException {
         for (Bonus bns : BONUS_DATABASE)

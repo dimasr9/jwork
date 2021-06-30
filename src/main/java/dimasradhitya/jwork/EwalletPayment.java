@@ -2,13 +2,13 @@ package dimasradhitya.jwork;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+
 /**
- * Abstract class EwalletPayment - write a description of the class here
+ * Class yang menyimpan fungsi-fungsi EwalletPayment
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
  */
 public class EwalletPayment extends Invoice
 {
@@ -25,7 +25,9 @@ public class EwalletPayment extends Invoice
         super(id, jobs, jobseeker);
         this.bonus = bonus;
     }
+    
     /**
+     * 
      */
     public PaymentType getPaymentType()
     {
@@ -33,25 +35,39 @@ public class EwalletPayment extends Invoice
         return this.PAYMENT_TYPE;
     }
     
+    /**
+     * 
+     * @return
+     */
     public Bonus getBonus()
     {
         // put your code here
         return this.bonus;
     }
     
+    /**
+     * 
+     * @param bonus
+     */
     public void setBonus(Bonus bonus)
     {
         // put your code here
         this.bonus = bonus;
     }
     
+    /**
+     * 
+     */
     public void setTotalFee(){
+        super.totalFee = 0;
+        for(Job j : getJobs())
+            super.totalFee += j.getFee();
         if (bonus != null && bonus.getActive() &&
                 getTotalFee() > bonus.getMinTotalFee()) {
             super.totalFee += bonus.getExtraFee();
         }
     }
-    
+
     public String toString()
     {
         Date date = getDate().getTime();

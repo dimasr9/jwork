@@ -6,9 +6,10 @@ import java.util.GregorianCalendar;
 import java.time.LocalDate;
 
 /**
+ * Class yang menyimpan fungsi-fungsi Invoice
  *
  * @author Dimas Radhitya
- * @version Modul 2 - 25 Maret 2021
+ * @version 30 Juni 2021
  */
 public abstract class Invoice
 {
@@ -24,7 +25,7 @@ public abstract class Invoice
      * Constructor untuk object dari class Invoice
      * @param id id dari Invoice
      */
-    public Invoice(int id, ArrayList<Job> job, Jobseeker jobseeker)
+    public Invoice(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
         // initialise instance variables
         this.id = id;
@@ -108,6 +109,10 @@ public abstract class Invoice
     /**
      */
     public abstract void setTotalFee();
+
+    public void setTotalFee(int totalFee) {
+        this.totalFee = totalFee;
+    }
     
     /**
      */

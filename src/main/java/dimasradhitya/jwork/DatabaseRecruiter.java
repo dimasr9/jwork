@@ -3,9 +3,10 @@ package dimasradhitya.jwork;
 import java.util.ArrayList;
 
 /**
+ * Class yang menyimpan fungsi-fungsi Database Recruiter
  *
  * @author Dimas Radhitya
- * @version Modul 2 - 25 Maret 2021
+ * @version 30 Juni 2021
  */
 public class DatabaseRecruiter
 {
@@ -15,16 +16,26 @@ public class DatabaseRecruiter
 
     /**
      * method untuk menambahkan objek pada database recruiter
-     * @return nilai false
+     * @return ArrayList<Recruiter>
      */
     public static ArrayList<Recruiter> getRecruiterDatabase(){
         return RECRUITER_DATABASE;
     }
 
+    /**
+     * 
+     * @return last id
+     */
     public static int getLastId(){
         return lastId;
     }
 
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws RecruiterNotFoundException
+     */
     public static Recruiter getRecruiterById(int id) throws RecruiterNotFoundException {
         Recruiter val = null;
         try
@@ -44,12 +55,23 @@ public class DatabaseRecruiter
         return val;
     }
 
+    /**
+     * 
+     * @param recruiter
+     * @return
+     */
     public static boolean addRecruiter(Recruiter recruiter){
         RECRUITER_DATABASE.add(recruiter);
         lastId = RECRUITER_DATABASE.size()-1;
         return true;
     }
 
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws RecruiterNotFoundException
+     */
     public static boolean removeRecruiter(int id) throws RecruiterNotFoundException {
         for (Recruiter rc : RECRUITER_DATABASE)
         {

@@ -1,9 +1,10 @@
 package dimasradhitya.jwork;
 
 /**
+ * Class yang menyimpan fungsi-fungsi Location
  *
  * @author Dimas Radhitya
- * @version Modul 2 - 25 Maret 2021
+ * @version 30 Juni 2021
  */
 public class Location
 {

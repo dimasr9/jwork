@@ -29,16 +29,12 @@ public class JobController {
 
     @RequestMapping(value = "/recruiter/{recruiterId}", method = RequestMethod.GET)
     public ArrayList<Job> getJobByRecruiter(@PathVariable int recruiterId) {
-        ArrayList<Job> job = null;
-        job = DatabaseJob.getJobByRecruiter(recruiterId);
-        return job;
+        return DatabaseJob.getJobByRecruiter(recruiterId);
     }
 
     @RequestMapping(value = "/category/{category}", method = RequestMethod.GET)
     public ArrayList<Job> getJobByCategory(@PathVariable JobCategory category) {
-        ArrayList<Job> job = null;
-        job = DatabaseJob.getJobByCategory(category);
-        return job;
+        return DatabaseJob.getJobByCategory(category);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

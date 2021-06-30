@@ -1,10 +1,10 @@
 package dimasradhitya.jwork;
 
 /**
- * Enumeration class InvoiceStatus - write a description of the enum class here
+ * Class yang menyimpan tipe data status enum dari invoice
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
  */
 public enum InvoiceStatus
 {

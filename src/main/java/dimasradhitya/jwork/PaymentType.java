@@ -1,10 +1,10 @@
 package dimasradhitya.jwork;
 
 /**
- * Enumeration class PaymentType - write a description of the enum class here
+ * Class yang menyimpan fungsi-fungsi PaymentType
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
  */
 public enum PaymentType
 {

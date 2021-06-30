@@ -7,9 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Class yang menyimpan fungsi-fungsi Jobseeker
  *
  * @author Dimas Radhitya
- * @version Modul 2 - 25 Maret 2021
+ * @version 30 Juni 2021
  */
 public class Jobseeker
 {
@@ -37,6 +38,16 @@ public class Jobseeker
         setPassword(password);
     }
     
+    /**
+     * 
+     * @param id
+     * @param name
+     * @param email
+     * @param password
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     public Jobseeker(int id, String name, String email, String password,
                       int year, int month, int dayOfMonth)
     {
@@ -47,6 +58,13 @@ public class Jobseeker
         this.setJoinDate(year, month, dayOfMonth);
     }
     
+    /**
+     * 
+     * @param id
+     * @param name
+     * @param email
+     * @param password
+     */
     public Jobseeker(int id, String name, String email, String password)
     {
         this.id = id;
@@ -117,7 +135,7 @@ public class Jobseeker
      * @param email dari Jobseeker
      */
     public void setEmail(String email){ 
-        Pattern p = Pattern.compile("^(?!.*([.])\1)[^-.@][a-zA-Z0-9.&*_~]+(?!.*([@.])\1)[^-.][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*$\n");
+        Pattern p = Pattern.compile("^(?!.*([.])\1)[^-.@][a-zA-Z0-9.&*_~]+(?!.*([@.])\1)[^-.][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*$");
         Matcher m = p.matcher(email);
         if (m.find()){
             this.email = email;

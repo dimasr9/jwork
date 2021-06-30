@@ -1,6 +1,7 @@
 package dimasradhitya.jwork.controller;
 
 import dimasradhitya.jwork.*;
+import static dimasradhitya.jwork.DatabaseConnectionPostgre.connection;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/jobseeker")
@@ -14,14 +15,7 @@ public class JobseekerController {
 
     @RequestMapping("/{id}")
     public Jobseeker getJobseekerById(@PathVariable int id) {
-        Jobseeker jobseeker = null;
-        try {
-            jobseeker = DatabaseJobseeker.getJobseekerById(id);
-        } catch (JobSeekerNotFoundException e) {
-            e.getMessage();
-            return null;
-        }
-        return jobseeker;
+        return DatabaseJobseekerPostgre.getJobseeker(id);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -29,21 +23,13 @@ public class JobseekerController {
                                   @RequestParam(value="email") String email,
                                   @RequestParam(value="password") String password)
     {
-        Jobseeker jobseeker = new Jobseeker(DatabaseJobseeker.getLastId()+1, name, email, password);
-        try {
-            DatabaseJobseeker.addJobseeker(jobseeker);
-        } catch (EmailAlreadyExistsException e) {
-            e.getMessage();
-            return null;
-        }
-        return jobseeker;
+        return DatabaseJobseekerPostgre.insertJobSeeker(name, email, password);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Jobseeker loginJobseeker(@RequestParam(value="email") String email,
                                        @RequestParam(value="password") String password)
     {
-        Jobseeker jobseeker = DatabaseJobseeker.jobseekerLogin(email, password);
-        return jobseeker;
+        return DatabaseJobseekerPostgre.getJobseeker(email, password);
     }
 }

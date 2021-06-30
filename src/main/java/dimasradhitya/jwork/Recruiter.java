@@ -1,11 +1,10 @@
 package dimasradhitya.jwork;
 
-import java.util.ArrayList;
-
 /**
+ * Class yang menyimpan fungsi-fungsi Recruiter
  *
  * @author Dimas Radhitya
- * @version Modul 2 - 25 Maret 2021
+ * @version 30 Juni 2021
  */
 public class Recruiter {
     // Mendefinisikan variabel

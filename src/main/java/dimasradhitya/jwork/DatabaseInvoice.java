@@ -2,10 +2,20 @@ package dimasradhitya.jwork;
 
 import java.util.ArrayList;
 
+/**
+ * Class yang menyimpan fungsi-fungsi Database Invoice
+ *
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
+ */
 public class DatabaseInvoice {
     private static ArrayList<Invoice> INVOICE_DATABASE = new ArrayList<Invoice>();
     private static int lastId;
 
+    /** 
+     * method yang digunakan untuk mendapatkan Invoice
+     * @return ArrayList<Invoice> mengebalikan nilai array yang berisi Invoice
+     */
     public static ArrayList<Invoice> getInvoiceDatabase(){
         return INVOICE_DATABASE;
     }
@@ -14,6 +24,12 @@ public class DatabaseInvoice {
         return lastId;
     }
 
+    /** 
+     * method yang digunakan untuk mendapatkan invoice didapatkan dari id
+     * @param id int id
+     * @return int mengebalikan nilai id
+     * @throws InvoiceNotFoundException
+     */
     public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException{
         Invoice val = null;
         try
@@ -33,21 +49,31 @@ public class DatabaseInvoice {
         return val;
     }
 
+    /** 
+     * method yang digunakan untuk mendapatkan invoice didapatkan dari jobseeker id
+     * @param jobseekerId int id
+     * @return int mengebalikan nilai jobseeker id
+     */
     public static ArrayList<Invoice> getInvoiceByJobseeker(int jobseekerId){
         ArrayList<Invoice> temp = new ArrayList<>();
         for (int i=0; i < INVOICE_DATABASE.size(); i++) {
             if(INVOICE_DATABASE.get(i).getJobseeker().getId() == jobseekerId){
                 temp.add(INVOICE_DATABASE.get(i));
-                return temp;
             }
         }
-        return null;
+        return temp.isEmpty() ? null : temp;
     }
 
+    /** 
+     * method yang digunakan untuk menambah invoice
+     * @param id int id
+     * @return boolean untuk menambah invoice
+     * @throws OngoingInvoiceAlreadyExistsException
+     */
     public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException{
         for (Invoice invc : INVOICE_DATABASE)
         {
-            if (invoice.getInvoiceStatus() == invc.getInvoiceStatus())
+            if ((invc.getInvoiceStatus() == (InvoiceStatus.OnGoing)) && invoice.getJobseeker().getId() == (invc.getJobseeker().getId()))
             {
                 throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
@@ -57,6 +83,12 @@ public class DatabaseInvoice {
         return true;
     }
 
+    /** 
+     * method yang digunakan untuk mengubah status invoice
+     * @param id int id
+     * @param invoiceStatus InvoiceStatus status dari invoice
+     * @return boolean untuk mengubah status invoice
+     */
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus){
         for (int i=0; i < INVOICE_DATABASE.size(); i++) {
             if(INVOICE_DATABASE.get(i).getId() == id) {
@@ -67,6 +99,11 @@ public class DatabaseInvoice {
         return false;
     }
 
+    /** 
+     * method yang digunakan untuk menghapus invoice
+     * @param id int id
+     * @return boolean untuk menghapus invoice
+     */
     public static boolean removeInvoice(int id) throws InvoiceNotFoundException{
         for (Invoice invc : INVOICE_DATABASE)
         {

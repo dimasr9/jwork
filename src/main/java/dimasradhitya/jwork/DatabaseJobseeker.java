@@ -3,10 +3,10 @@ package dimasradhitya.jwork;
 import java.util.ArrayList;
 
 /**
- * Write a description of class DatabaseJobseeker here.
+ * Class yang menyimpan fungsi-fungsi Database Jobseeker
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dimas Radhitya
+ * @version 30 Juni 2021
  */
 public class DatabaseJobseeker
 {
@@ -14,39 +14,42 @@ public class DatabaseJobseeker
     private static ArrayList<Jobseeker> JOBSEEKER_DATABASE = new ArrayList<Jobseeker>();
     private static int lastId = 0;
     
+    /**
+     * 
+     * @return
+     */
     public static ArrayList<Jobseeker> getDatabaseJobseeker(){
         return JOBSEEKER_DATABASE;
     }
 
+    /**
+     * 
+     * @return
+     */
     public static int getLastId(){
         return lastId;
     }
 
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws JobSeekerNotFoundException
+     */
     public static Jobseeker getJobseekerById(int id) throws JobSeekerNotFoundException {
-        Jobseeker val = null;
-        try
-        {
-            for (Jobseeker js : JOBSEEKER_DATABASE)
-            {
-                if (id == js.getId())
-                {
-                    val = js;
-                }
-            }
-        }
-        catch (Exception error)
-        {
-            throw new JobSeekerNotFoundException(id);
-        }
-        return val;
+        for (Jobseeker js : JOBSEEKER_DATABASE)
+            if (id == js.getId())
+                return js;
+        throw new JobSeekerNotFoundException(id);
     }
+
     /**
      * method untuk menambahkan objek database job
      * @return nilai false
      */
     public static boolean addJobseeker(Jobseeker jobseeker) throws EmailAlreadyExistsException{
         for (Jobseeker js : JOBSEEKER_DATABASE) {
-            if (jobseeker.getEmail() == js.getEmail()) {
+            if (jobseeker.getEmail().equals(js.getEmail())) {
                 throw new EmailAlreadyExistsException(jobseeker);
             }
         }
@@ -71,11 +74,17 @@ public class DatabaseJobseeker
         throw new JobSeekerNotFoundException(id);
     }
 
+    /**
+     * 
+     * @param email
+     * @param password
+     * @return
+     */
     public static Jobseeker jobseekerLogin(String email, String password){
         Jobseeker val = null;
         for (Jobseeker js : JOBSEEKER_DATABASE)
         {
-            if (email == js.getEmail() && password == js.getPassword())
+            if (js.getEmail().equals(email) && js.getPassword().equals(password))
             {
                 val = js;
             }
